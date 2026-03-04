@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Founder - Rithish | Feenixs AI Platform</title>
+    <meta name="description" content="Meet Rithish, the founder and chief architect of Feenixs, an AI & Data Science engineer building the future of artificial intelligence.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/shared.css">
+    <link rel="stylesheet" href="../css/founder.css">
+    
+    <!-- External Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Video Background -->
+    <div class="video-background">
+        <video id="bg-video" autoplay muted loop playsinline>
+            <source src="../assets/videos/neural-network-bg.mp4" type="video/mp4">
+            <div class="video-fallback"></div>
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
+    <!-- Particle Canvas -->
+    <canvas id="particle-canvas" class="particle-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">FEENIXS</span>
+                <div class="logo-glow"></div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="vision.html" class="nav-link">Vision</a></li>
+                <li><a href="technologies.html" class="nav-link">Technologies</a></li>
+                <li><a href="founder.html" class="nav-link active">Founder</a></li>
+                <li><a href="community.html" class="nav-link">Community</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-auth">
+                <button id="login-btn" class="auth-btn">Login</button>
+                <button id="register-btn" class="auth-btn primary">Sign Up</button>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <div class="header-content">
+                    <h1 class="page-title">Founder</h1>
+                    <p class="page-subtitle">Visionary behind Feenixs</p>
+                    <div class="breadcrumb">
+                        <a href="index.html">Home</a>
+                        <span class="separator">/</span>
+                        <span class="current">Founder</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Founder Profile -->
+        <section class="founder-profile">
+            <div class="container">
+                <div class="profile-content">
+                    <div class="founder-visual">
+                        <div class="founder-avatar">
+                            <div class="avatar-glow"></div>
+                            <i class="fas fa-user-astronaut"></i>
+                        </div>
+                        <div class="social-links">
+                            <a href="#" class="social-link" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="social-link" title="LinkedIn">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="social-link" title="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link" title="Email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="founder-info">
+                        <h2>Rithish</h2>
+                        <p class="founder-title">Founder & Chief Architect</p>
+                        <div class="founder-bio">
+                            <h3>About</h3>
+                            <p>
+                                AI & Data Science engineer from NPR College of Engineering & Technology, 
+                                passionate about building the next generation of intelligent systems and 
+                                exploring new computing paradigms.
+                            </p>
+                            <p>
+                                With a strong foundation in artificial intelligence and machine learning, 
+                                Rithish is leading Feenixs to revolutionize how humans interact with 
+                                technology and create scalable AI platforms for the future.
+                            </p>
+                        </div>
+                        <div class="founder-details">
+                            <h3>Background</h3>
+                            <div class="detail-grid">
+                                <div class="detail-item">
+                                    <div class="detail-icon">
+                                        <i class="fas fa-graduation-cap"></i>
+                                    </div>
+                                    <div class="detail-content">
+                                        <h4>Education</h4>
+                                        <p>B.Tech - Artificial Intelligence & Data Science</p>
+                                        <p>NPR College of Engineering & Technology</p>
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="detail-content">
+                                        <h4>Location</h4>
+                                        <p>Natham, Dindigul</p>
+                                        <p>Tamil Nadu, India</p>
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-icon">
+                                        <i class="fas fa-language"></i>
+                                    </div>
+                                    <div class="detail-content">
+                                        <h4>Languages</h4>
+                                        <p>English, Tamil</p>
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-icon">
+                                        <i class="fas fa-briefcase"></i>
+                                    </div>
+                                    <div class="detail-content">
+                                        <h4>Role</h4>
+                                        <p>Engineer & Innovator</p>
+                                        <p>Startup Founder</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expertise Areas -->
+        <section class="expertise-areas">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Areas of Expertise</h2>
+                    <p class="section-subtitle">Core competencies driving innovation at Feenixs</p>
+                </div>
+                <div class="expertise-grid">
+                    <div class="expertise-card">
+                        <div class="expertise-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Artificial Intelligence</h3>
+                        <p>Deep expertise in neural networks, deep learning architectures, and AI system design with focus on practical applications.</p>
+                        <div class="expertise-level">
+                            <div class="level-bar">
+                                <div class="level-fill" style="width: 90%"></div>
+                            </div>
+                            <span class="level-text">Expert</span>
+                        </div>
+                    </div>
+
+                    <div class="expertise-card">
+                        <div class="expertise-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3>Data Science</h3>
+                        <p>Advanced skills in data analysis, statistical modeling, and extracting insights from complex datasets to drive decision-making.</p>
+                        <div class="expertise-level">
+                            <div class="level-bar">
+                                <div class="level-fill" style="width: 85%"></div>
+                            </div>
+                            <span class="level-text">Advanced</span>
+                        </div>
+                    </div>
+
+                    <div class="expertise-card">
+                        <div class="expertise-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Software Engineering</h3>
+                        <p>Proficient in multiple programming languages and frameworks, with experience building scalable, production-ready systems.</p>
+                        <div class="expertise-level">
+                            <div class="level-bar">
+                                <div class="level-fill" style="width: 88%"></div>
+                            </div>
+                            <span class="level-text">Expert</span>
+                        </div>
+                    </div>
+
+                    <div class="expertise-card">
+                        <div class="expertise-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Innovation & Research</h3>
+                        <p>Passionate researcher exploring new computing paradigms and pushing the boundaries of what's possible with AI.</p>
+                        <div class="expertise-level">
+                            <div class="level-bar">
+                                <div class="level-fill" style="width: 92%"></div>
+                            </div>
+                            <span class="level-text">Expert</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Journey Timeline -->
+        <section class="journey-timeline">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Journey & Achievements</h2>
+                    <p class="section-subtitle">The path that led to founding Feenixs</p>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <div class="marker-dot"></div>
+                            <div class="marker-line"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2022</div>
+                            <h3>Academic Foundation</h3>
+                            <p>Began B.Tech in Artificial Intelligence & Data Science at NPR College of Engineering & Technology, laying the groundwork for future innovations.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <div class="marker-dot"></div>
+                            <div class="marker-line"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2023</div>
+                            <h3>Research & Development</h3>
+                            <p>Started exploring advanced AI concepts and began working on innovative projects that combined theoretical knowledge with practical applications.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <div class="marker-dot"></div>
+                            <div class="marker-line"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2024</div>
+                            <h3>Feenixs Foundation</h3>
+                            <p>Founded Feenixs with the vision to revolutionize AI systems and create next-generation computational technologies that benefit humanity.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <div class="marker-dot"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2025-Present</div>
+                            <h3>Innovation & Growth</h3>
+                            <p>Leading Feenixs through rapid development phases, building cutting-edge AI systems and establishing a community of like-minded innovators.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Philosophy Section -->
+        <section class="founder-philosophy">
+            <div class="container">
+                <div class="philosophy-content">
+                    <div class="philosophy-text">
+                        <h2>Vision & Philosophy</h2>
+                        <blockquote class="philosophy-quote">
+                            "The future of technology lies not in replacing human intelligence, but in augmenting it with systems that learn, adapt, and evolve alongside us."
+                        </blockquote>
+                        <div class="philosophy-principles">
+                            <div class="principle">
+                                <div class="principle-icon">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                                <h4>Innovation First</h4>
+                                <p>Always push boundaries and explore what's possible, never settling for the status quo.</p>
+                            </div>
+                            <div class="principle">
+                                <div class="principle-icon">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <h4>Human-Centered</h4>
+                                <p>Technology should serve humanity, enhancing lives while preserving human values and dignity.</p>
+                            </div>
+                            <div class="principle">
+                                <div class="principle-icon">
+                                    <i class="fas fa-infinity"></i>
+                                </div>
+                                <h4>Continuous Learning</h4>
+                                <p>Embrace curiosity and never stop learning, as knowledge is the foundation of innovation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="founder-cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Connect & Collaborate</h2>
+                    <p>Join the mission to build the future of artificial intelligence and advanced computing systems.</p>
+                    <div class="cta-actions">
+                        <a href="community.html" class="btn primary">
+                            <span>Join Community</span>
+                            <i class="fas fa-users"></i>
+                        </a>
+                        <a href="contact.html" class="btn secondary">
+                            <span>Get in Touch</span>
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">FEENIXS</div>
+                    <p>Building the future of artificial intelligence and advanced computing systems.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Technologies</h4>
+                        <ul>
+                            <li><a href="technologies.html">Artificial Intelligence</a></li>
+                            <li><a href="technologies.html">Machine Learning</a></li>
+                            <li><a href="technologies.html">Advanced Computing</a></li>
+                            <li><a href="technologies.html">Human-AI Systems</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="vision.html">Our Vision</a></li>
+                            <li><a href="founder.html">Founder</a></li>
+                            <li><a href="community.html">Community</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="#" id="privacy-link">Privacy Policy</a></li>
+                            <li><a href="#" id="terms-link">Terms of Service</a></li>
+                            <li><a href="#" id="data-policy-link">Data Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Feenixs. All rights reserved. | Building tomorrow's AI today.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="auth-title">Login</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="auth-form">
+                    <div id="login-fields" class="auth-fields">
+                        <div class="form-group">
+                            <input type="email" id="login-email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="login-password" placeholder="Password" required>
+                        </div>
+                    </div>
+                    <div id="register-fields" class="auth-fields" style="display: none;">
+                        <div class="form-group">
+                            <input type="text" id="register-username" placeholder="Username" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="register-email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="register-password" placeholder="Password" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="register-confirm-password" placeholder="Confirm Password" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn primary full-width" id="auth-submit">Login</button>
+                </form>
+                <div class="auth-switch">
+                    <span id="auth-switch-text">Don't have an account?</span>
+                    <a href="#" id="auth-switch-link">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Legal Modals -->
+    <div id="privacy-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Privacy Policy</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>Data Collection</h3>
+                <p>We collect information you provide directly to us, such as when you create an account, send us a message, or participate in our community chat.</p>
+                
+                <h3>Data Usage</h3>
+                <p>Your data is used to provide and improve our services, communicate with you, and analyze usage patterns to enhance user experience.</p>
+                
+                <h3>Data Storage</h3>
+                <p>All user data is stored securely in CSV files within our repository and is protected using industry-standard encryption methods.</p>
+                
+                <h3>Your Rights</h3>
+                <p>You have the right to access, update, or delete your personal information at any time by contacting us.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="terms-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Terms of Service</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>Acceptance of Terms</h3>
+                <p>By accessing and using Feenixs services, you accept and agree to be bound by the terms and provision of this agreement.</p>
+                
+                <h3>Use License</h3>
+                <p>Permission is granted to temporarily access the materials (information and software) on Feenixs website for personal, non-commercial transitory viewing only.</p>
+                
+                <h3>User Responsibilities</h3>
+                <p>Users are responsible for maintaining the confidentiality of their account and password and for restricting access to their account.</p>
+                
+                <h3>Service Availability</h3>
+                <p>We strive to maintain high availability of our services but cannot guarantee uninterrupted access at all times.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/shared.js"></script>
+    <script src="../js/founder.js"></script>
+</body>
+</html>

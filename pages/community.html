@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community - Feenixs AI Platform</title>
+    <meta name="description" content="Join the Feenixs community of AI enthusiasts, researchers, and innovators building the future of artificial intelligence together.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/shared.css">
+    <link rel="stylesheet" href="../css/community.css">
+    
+    <!-- External Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Video Background -->
+    <div class="video-background">
+        <video id="bg-video" autoplay muted loop playsinline>
+            <source src="../assets/videos/neural-network-bg.mp4" type="video/mp4">
+            <div class="video-fallback"></div>
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
+    <!-- Particle Canvas -->
+    <canvas id="particle-canvas" class="particle-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">FEENIXS</span>
+                <div class="logo-glow"></div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="vision.html" class="nav-link">Vision</a></li>
+                <li><a href="technologies.html" class="nav-link">Technologies</a></li>
+                <li><a href="founder.html" class="nav-link">Founder</a></li>
+                <li><a href="community.html" class="nav-link active">Community</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-auth">
+                <button id="login-btn" class="auth-btn">Login</button>
+                <button id="register-btn" class="auth-btn primary">Sign Up</button>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <div class="header-content">
+                    <h1 class="page-title">Community</h1>
+                    <p class="page-subtitle">Join the AI revolution</p>
+                    <div class="breadcrumb">
+                        <a href="index.html">Home</a>
+                        <span class="separator">/</span>
+                        <span class="current">Community</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Hero -->
+        <section class="community-hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h2>Join Our Growing Community</h2>
+                        <p>
+                            Connect with AI enthusiasts, researchers, and innovators from around the world. 
+                            Share ideas, collaborate on projects, and be part of building the future of artificial intelligence.
+                        </p>
+                        <div class="hero-stats">
+                            <div class="stat">
+                                <div class="stat-number">150+</div>
+                                <div class="stat-label">Community Members</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">12</div>
+                                <div class="stat-label">Active Projects</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">3</div>
+                                <div class="stat-label">AI Models</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="community-graphic">
+                            <div class="network-nodes">
+                                <div class="node central"></div>
+                                <div class="node node-1"></div>
+                                <div class="node node-2"></div>
+                                <div class="node node-3"></div>
+                                <div class="node node-4"></div>
+                                <div class="node node-5"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Chat -->
+        <section class="community-chat-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Community Chat</h2>
+                    <p class="section-subtitle">Real-time discussions with AI enthusiasts</p>
+                </div>
+                <div class="chat-container">
+                    <div class="chat-main">
+                        <div class="chat-header">
+                            <div class="chat-info">
+                                <h3>General Discussion</h3>
+                                <span class="chat-status">
+                                    <span class="status-dot online"></span>
+                                    <span id="online-count">42 members online</span>
+                                </span>
+                            </div>
+                            <button id="join-chat" class="btn primary small">Join Conversation</button>
+                        </div>
+                        <div class="chat-messages" id="chat-messages">
+                            <div class="message">
+                                <div class="message-avatar">
+                                    <i class="fas fa-user-circle"></i>
+                                </div>
+                                <div class="message-content">
+                                    <div class="message-header">
+                                        <span class="message-author">AI_Enthusiast</span>
+                                        <span class="message-time">2 hours ago</span>
+                                    </div>
+                                    <div class="message-text">Excited to see what Feenixs builds in the AI space! The vision is incredible.</div>
+                                </div>
+                            </div>
+                            <div class="message">
+                                <div class="message-avatar">
+                                    <i class="fas fa-user-circle"></i>
+                                </div>
+                                <div class="message-content">
+                                    <div class="message-header">
+                                        <span class="message-author">TechExplorer</span>
+                                        <span class="message-time">5 hours ago</span>
+                                    </div>
+                                    <div class="message-text">The vision for human-AI integration is fascinating. Looking forward to seeing the implementations!</div>
+                                </div>
+                            </div>
+                            <div class="message">
+                                <div class="message-avatar">
+                                    <i class="fas fa-user-circle"></i>
+                                </div>
+                                <div class="message-content">
+                                    <div class="message-header">
+                                        <span class="message-author">DataScientist</span>
+                                        <span class="message-time">1 day ago</span>
+                                    </div>
+                                    <div class="message-text">Anyone interested in collaborating on a neural architecture search project? I have some ideas to share.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat-input-container" id="chat-input-container">
+                            <div class="chat-input-wrapper">
+                                <input type="text" id="chat-input" placeholder="Type your message..." disabled>
+                                <button id="send-message" class="send-btn" disabled>
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-sidebar">
+                        <div class="online-members">
+                            <h4>Online Members</h4>
+                            <div class="members-list">
+                                <div class="member-item">
+                                    <div class="member-avatar">
+                                        <i class="fas fa-user-circle"></i>
+                                    </div>
+                                    <div class="member-info">
+                                        <span class="member-name">AI_Enthusiast</span>
+                                        <span class="member-status online">Online</span>
+                                    </div>
+                                </div>
+                                <div class="member-item">
+                                    <div class="member-avatar">
+                                        <i class="fas fa-user-circle"></i>
+                                    </div>
+                                    <div class="member-info">
+                                        <span class="member-name">TechExplorer</span>
+                                        <span class="member-status online">Online</span>
+                                    </div>
+                                </div>
+                                <div class="member-item">
+                                    <div class="member-avatar">
+                                        <i class="fas fa-user-circle"></i>
+                                    </div>
+                                    <div class="member-info">
+                                        <span class="member-name">DataScientist</span>
+                                        <span class="member-status away">Away</span>
+                                    </div>
+                                </div>
+                                <div class="member-item">
+                                    <div class="member-avatar">
+                                        <i class="fas fa-user-circle"></i>
+                                    </div>
+                                    <div class="member-info">
+                                        <span class="member-name">MLResearcher</span>
+                                        <span class="member-status online">Online</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Features -->
+        <section class="community-features">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Community Features</h2>
+                    <p class="section-subtitle">Tools and resources for our members</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>Discussion Forums</h3>
+                        <p>Engage in thoughtful discussions about AI research, applications, and future directions.</p>
+                        <ul class="feature-list">
+                            <li>Technical discussions</li>
+                            <li>Research papers</li>
+                            <li>Project collaboration</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h3>Collaborative Projects</h3>
+                        <p>Work together on cutting-edge AI projects and contribute to open-source initiatives.</p>
+                        <ul class="feature-list">
+                            <li>Open source contributions</li>
+                            <li>Team formation</li>
+                            <li>Project showcases</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Learning Resources</h3>
+                        <p>Access exclusive tutorials, workshops, and learning materials from industry experts.</p>
+                        <ul class="feature-list">
+                            <li>Video tutorials</li>
+                            <li>Workshop sessions</li>
+                            <li>Study groups</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3>Events & Meetups</h3>
+                        <p>Participate in virtual and in-person events, hackathons, and networking opportunities.</p>
+                        <ul class="feature-list">
+                            <li>Virtual meetups</li>
+                            <li>Hackathons</li>
+                            <li>Guest speakers</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Signup -->
+        <section class="newsletter-section">
+            <div class="container">
+                <div class="newsletter-content">
+                    <div class="newsletter-text">
+                        <h2>Stay Updated</h2>
+                        <p>Get the latest news, updates, and exclusive content delivered to your inbox.</p>
+                    </div>
+                    <form id="newsletter-form" class="newsletter-form">
+                        <div class="form-group">
+                            <input type="email" placeholder="Enter your email" required>
+                            <button type="submit" class="btn primary">Subscribe</button>
+                        </div>
+                        <p class="newsletter-note">Join 500+ subscribers. Unsubscribe anytime.</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Guidelines -->
+        <section class="community-guidelines">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Community Guidelines</h2>
+                    <p class="section-subtitle">Help us maintain a positive and productive environment</p>
+                </div>
+                <div class="guidelines-grid">
+                    <div class="guideline-item">
+                        <div class="guideline-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>Be Respectful</h3>
+                        <p>Treat all community members with respect and courtesy, regardless of their experience level or background.</p>
+                    </div>
+
+                    <div class="guideline-item">
+                        <div class="guideline-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Share Knowledge</h3>
+                        <p>Contribute valuable insights, help others learn, and share your expertise with the community.</p>
+                    </div>
+
+                    <div class="guideline-item">
+                        <div class="guideline-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Stay Safe</h3>
+                        <p>Protect your personal information and report any inappropriate behavior to community moderators.</p>
+                    </div>
+
+                    <div class="guideline-item">
+                        <div class="guideline-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>Innovate Together</h3>
+                        <p>Embrace new ideas, challenge assumptions, and work together to push the boundaries of AI.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="community-cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to Join?</h2>
+                    <p>Be part of the community that's shaping the future of artificial intelligence.</p>
+                    <div class="cta-actions">
+                        <button id="register-cta" class="btn primary">
+                            <span>Sign Up Now</span>
+                            <i class="fas fa-user-plus"></i>
+                        </button>
+                        <a href="contact.html" class="btn secondary">
+                            <span>Learn More</span>
+                            <i class="fas fa-info-circle"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">FEENIXS</div>
+                    <p>Building the future of artificial intelligence and advanced computing systems.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Technologies</h4>
+                        <ul>
+                            <li><a href="technologies.html">Artificial Intelligence</a></li>
+                            <li><a href="technologies.html">Machine Learning</a></li>
+                            <li><a href="technologies.html">Advanced Computing</a></li>
+                            <li><a href="technologies.html">Human-AI Systems</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="vision.html">Our Vision</a></li>
+                            <li><a href="founder.html">Founder</a></li>
+                            <li><a href="community.html">Community</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="#" id="privacy-link">Privacy Policy</a></li>
+                            <li><a href="#" id="terms-link">Terms of Service</a></li>
+                            <li><a href="#" id="data-policy-link">Data Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Feenixs. All rights reserved. | Building tomorrow's AI today.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="auth-title">Login</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="auth-form">
+                    <div id="login-fields" class="auth-fields">
+                        <div class="form-group">
+                            <input type="email" id="login-email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="login-password" placeholder="Password" required>
+                        </div>
+                    </div>
+                    <div id="register-fields" class="auth-fields" style="display: none;">
+                        <div class="form-group">
+                            <input type="text" id="register-username" placeholder="Username" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="register-email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="register-password" placeholder="Password" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="register-confirm-password" placeholder="Confirm Password" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn primary full-width" id="auth-submit">Login</button>
+                </form>
+                <div class="auth-switch">
+                    <span id="auth-switch-text">Don't have an account?</span>
+                    <a href="#" id="auth-switch-link">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Legal Modals -->
+    <div id="privacy-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Privacy Policy</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>Data Collection</h3>
+                <p>We collect information you provide directly to us, such as when you create an account, send us a message, or participate in our community chat.</p>
+                
+                <h3>Data Usage</h3>
+                <p>Your data is used to provide and improve our services, communicate with you, and analyze usage patterns to enhance user experience.</p>
+                
+                <h3>Data Storage</h3>
+                <p>All user data is stored securely in CSV files within our repository and is protected using industry-standard encryption methods.</p>
+                
+                <h3>Your Rights</h3>
+                <p>You have the right to access, update, or delete your personal information at any time by contacting us.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="terms-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Terms of Service</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>Acceptance of Terms</h3>
+                <p>By accessing and using Feenixs services, you accept and agree to be bound by the terms and provision of this agreement.</p>
+                
+                <h3>Use License</h3>
+                <p>Permission is granted to temporarily access the materials (information and software) on Feenixs website for personal, non-commercial transitory viewing only.</p>
+                
+                <h3>User Responsibilities</h3>
+                <p>Users are responsible for maintaining the confidentiality of their account and password and for restricting access to their account.</p>
+                
+                <h3>Service Availability</h3>
+                <p>We strive to maintain high availability of our services but cannot guarantee uninterrupted access at all times.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/shared.js"></script>
+    <script src="../js/community.js"></script>
+</body>
+</html>

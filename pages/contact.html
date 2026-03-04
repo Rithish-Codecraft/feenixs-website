@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Feenixs AI Platform</title>
+    <meta name="description" content="Get in touch with Feenixs. Connect with us to explore collaboration opportunities, ask questions, or learn more about our AI research and development.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/shared.css">
+    <link rel="stylesheet" href="../css/contact.css">
+    
+    <!-- External Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Video Background -->
+    <div class="video-background">
+        <video id="bg-video" autoplay muted loop playsinline>
+            <source src="../assets/videos/neural-network-bg.mp4" type="video/mp4">
+            <div class="video-fallback"></div>
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
+    <!-- Particle Canvas -->
+    <canvas id="particle-canvas" class="particle-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">FEENIXS</span>
+                <div class="logo-glow"></div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="vision.html" class="nav-link">Vision</a></li>
+                <li><a href="technologies.html" class="nav-link">Technologies</a></li>
+                <li><a href="founder.html" class="nav-link">Founder</a></li>
+                <li><a href="community.html" class="nav-link">Community</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+            </ul>
+            <div class="nav-auth">
+                <button id="login-btn" class="auth-btn">Login</button>
+                <button id="register-btn" class="auth-btn primary">Sign Up</button>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <div class="header-content">
+                    <h1 class="page-title">Get In Touch</h1>
+                    <p class="page-subtitle">Connect with us to explore collaboration opportunities</p>
+                    <div class="breadcrumb">
+                        <a href="index.html">Home</a>
+                        <span class="separator">/</span>
+                        <span class="current">Contact</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Hero -->
+        <section class="contact-hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h2>Let's Build the Future Together</h2>
+                        <p>
+                            Whether you're interested in collaboration, have questions about our research, 
+                            or want to join our community, we'd love to hear from you. 
+                            Your ideas and feedback help us shape the future of AI.
+                        </p>
+                        <div class="contact-metrics">
+                            <div class="metric">
+                                <div class="metric-number">24h</div>
+                                <div class="metric-label">Response Time</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-number">100%</div>
+                                <div class="metric-label">Satisfaction</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-number">50+</div>
+                                <div class="metric-label">Partnerships</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="contact-graphic">
+                            <div class="connection-lines">
+                                <div class="line line-1"></div>
+                                <div class="line line-2"></div>
+                                <div class="line line-3"></div>
+                            </div>
+                            <div class="contact-nodes">
+                                <div class="contact-node main">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-node">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="contact-node">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <div class="contact-node">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Content -->
+        <section class="contact-content">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="info-header">
+                            <h3>Contact Information</h3>
+                            <p>Reach out to us through any of these channels</p>
+                        </div>
+                        <div class="contact-items">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h4>Email</h4>
+                                    <p>contact@feenixs.com</p>
+                                    <span class="contact-note">For general inquiries and partnerships</span>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h4>Location</h4>
+                                    <p>Tamil Nadu, India</p>
+                                    <span class="contact-note">Natham, Dindigul District</span>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h4>Working Hours</h4>
+                                    <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
+                                    <span class="contact-note">IST (Indian Standard Time)</span>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h4>Phone</h4>
+                                    <p>+91 XXXXX XXXXX</p>
+                                    <span class="contact-note">Available during business hours</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="social-contacts">
+                            <h4>Connect With Us</h4>
+                            <div class="social-links">
+                                <a href="#" class="social-link" title="GitHub">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" class="social-link" title="LinkedIn">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="#" class="social-link" title="Twitter">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="social-link" title="Discord">
+                                    <i class="fab fa-discord"></i>
+                                </a>
+                                <a href="#" class="social-link" title="YouTube">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-section">
+                        <div class="form-header">
+                            <h3>Send Us a Message</h3>
+                            <p>Fill out the form below and we'll get back to you soon</p>
+                        </div>
+                        <form id="contact-form" class="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contact-name">Your Name *</label>
+                                    <input type="text" id="contact-name" name="name" required placeholder="John Doe">
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-email">Email Address *</label>
+                                    <input type="email" id="contact-email" name="email" required placeholder="john@example.com">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-subject">Subject *</label>
+                                <select id="contact-subject" name="subject" required>
+                                    <option value="">Select a subject</option>
+                                    <option value="general">General Inquiry</option>
+                                    <option value="partnership">Partnership Opportunity</option>
+                                    <option value="research">Research Collaboration</option>
+                                    <option value="investment">Investment Inquiry</option>
+                                    <option value="careers">Career Opportunities</option>
+                                    <option value="technical">Technical Support</option>
+                                    <option value="feedback">Feedback & Suggestions</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-message">Message *</label>
+                                <textarea id="contact-message" name="message" required placeholder="Tell us about your inquiry, project idea, or how we can help..." rows="6"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="contact-newsletter" name="newsletter">
+                                    <span class="checkmark"></span>
+                                    I'd like to receive updates about Feenixs projects and news
+                                </label>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn primary">
+                                    <span>Send Message</span>
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                                <button type="reset" class="btn secondary">
+                                    <span>Clear Form</span>
+                                    <i class="fas fa-redo"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                    <p class="section-subtitle">Quick answers to common questions</p>
+                </div>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>What kind of partnerships are you looking for?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We're open to various types of partnerships including research collaborations, technology integrations, academic partnerships, and investment opportunities. If you're working on innovative AI projects or have resources that could help advance our mission, we'd love to hear from you.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>How can I contribute to Feenixs projects?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>You can contribute by joining our community, participating in discussions, contributing to open-source projects, sharing research ideas, or collaborating on specific initiatives. We also welcome feedback and suggestions that can help improve our work.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>Do you offer internships or job opportunities?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>As we grow, we're looking for talented individuals passionate about AI and innovation. Currently, we offer internship opportunities and are building our core team. Reach out with your resume and areas of interest to explore potential collaborations.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>How quickly can I expect a response?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We strive to respond to all inquiries within 24 hours during business days. For urgent matters or partnership opportunities, we prioritize quick responses. Complex technical questions may take additional time for thorough review.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>Can I visit your facility or meet in person?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We welcome virtual meetings and collaborations. For in-person visits, please contact us in advance to schedule appointments. We also participate in AI conferences and events where you can meet our team.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>What information should I include in my inquiry?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Please include your background, specific area of interest, proposed collaboration idea, and what you hope to achieve. For technical inquiries, include relevant details about your project or research. The more specific you are, the better we can assist you.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Office Locations -->
+        <section class="office-locations">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Our Presence</h2>
+                    <p class="section-subtitle">Where you can find us</p>
+                </div>
+                <div class="locations-grid">
+                    <div class="location-card">
+                        <div class="location-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3>Headquarters</h3>
+                        <p>Natham, Dindigul</p>
+                        <p>Tamil Nadu, India</p>
+                        <div class="location-details">
+                            <span class="location-type">Main Office</span>
+                            <span class="location-status">Active</span>
+                        </div>
+                    </div>
+
+                    <div class="location-card">
+                        <div class="location-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3>Virtual Office</h3>
+                        <p>Global Remote Team</p>
+                        <p>Worldwide Presence</p>
+                        <div class="location-details">
+                            <span class="location-type">Remote</span>
+                            <span class="location-status">Available 24/7</span>
+                        </div>
+                    </div>
+
+                    <div class="location-card">
+                        <div class="location-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <h3>Research Lab</h3>
+                        <p>NPR College of Engineering</p>
+                        <p>Technology Campus</p>
+                        <div class="location-details">
+                            <span class="location-type">Research</span>
+                            <span class="location-status">Coming Soon</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="contact-cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to Start the Conversation?</h2>
+                    <p>Whether you have a question, idea, or partnership opportunity, we're here to listen and collaborate.</p>
+                    <div class="cta-actions">
+                        <a href="#contact-form" class="btn primary">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </a>
+                        <a href="community.html" class="btn secondary">
+                            <span>Join Community</span>
+                            <i class="fas fa-users"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">FEENIXS</div>
+                    <p>Building the future of artificial intelligence and advanced computing systems.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Technologies</h4>
+                        <ul>
+                            <li><a href="technologies.html">Artificial Intelligence</a></li>
+                            <li><a href="technologies.html">Machine Learning</a></li>
+                            <li><a href="technologies.html">Advanced Computing</a></li>
+                            <li><a href="technologies.html">Human-AI Systems</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="vision.html">Our Vision</a></li>
+                            <li><a href="founder.html">Founder</a></li>
+                            <li><a href="community.html">Community</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="#" id="privacy-link">Privacy Policy</a></li>
+                            <li><a href="#" id="terms-link">Terms of Service</a></li>
+                            <li><a href="#" id="data-policy-link">Data Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Feenixs. All rights reserved. | Building tomorrow's AI today.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="auth-title">Login</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="auth-form">
+                    <div id="login-fields" class="auth-fields">
+                        <div class="form-group">
+                            <input type="email" id="login-email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="login-password" placeholder="Password" required>
+                        </div>
+                    </div>
+                    <div id="register-fields" class="auth-fields" style="display: none;">
+                        <div class="form-group">
+                            <input type="text" id="register-username" placeholder="Username" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="register-email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="register-password" placeholder="Password" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="register-confirm-password" placeholder="Confirm Password" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn primary full-width" id="auth-submit">Login</button>
+                </form>
+                <div class="auth-switch">
+                    <span id="auth-switch-text">Don't have an account?</span>
+                    <a href="#" id="auth-switch-link">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Legal Modals -->
+    <div id="privacy-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Privacy Policy</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>Data Collection</h3>
+                <p>We collect information you provide directly to us, such as when you create an account, send us a message, or participate in our community chat.</p>
+                
+                <h3>Data Usage</h3>
+                <p>Your data is used to provide and improve our services, communicate with you, and analyze usage patterns to enhance user experience.</p>
+                
+                <h3>Data Storage</h3>
+                <p>All user data is stored securely in CSV files within our repository and is protected using industry-standard encryption methods.</p>
+                
+                <h3>Your Rights</h3>
+                <p>You have the right to access, update, or delete your personal information at any time by contacting us.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="terms-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Terms of Service</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>Acceptance of Terms</h3>
+                <p>By accessing and using Feenixs services, you accept and agree to be bound by the terms and provision of this agreement.</p>
+                
+                <h3>Use License</h3>
+                <p>Permission is granted to temporarily access the materials (information and software) on Feenixs website for personal, non-commercial transitory viewing only.</p>
+                
+                <h3>User Responsibilities</h3>
+                <p>Users are responsible for maintaining the confidentiality of their account and password and for restricting access to their account.</p>
+                
+                <h3>Service Availability</h3>
+                <p>We strive to maintain high availability of our services but cannot guarantee uninterrupted access at all times.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/shared.js"></script>
+    <script src="../js/contact.js"></script>
+</body>
+</html>

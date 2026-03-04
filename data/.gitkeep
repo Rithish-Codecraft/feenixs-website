@@ -1,0 +1,2 @@
+# This file ensures the data directory is tracked by Git
+# CSV files in this directory will contain user data and should be handled carefully
