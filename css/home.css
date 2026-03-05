@@ -82,6 +82,7 @@
     align-items: center;
     position: relative;
     overflow: hidden;
+    background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
 }
 
 .hero-content {
@@ -285,18 +286,112 @@
 .particle:nth-child(7) { top: 60%; left: 40%; animation: particleFloat 3s ease-in-out infinite 0.3s; }
 .particle:nth-child(8) { top: 25%; left: 50%; animation: particleFloat 3s ease-in-out infinite 0.8s; }
 
-.orbit::before {
-    content: '';
+/* AI Grid Floor */
+.ai-grid-floor {
     position: absolute;
-    width: 8px;
-    height: 8px;
-    background: var(--primary-color);
+    bottom: -100px;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(180deg, 
+        transparent 0%, 
+        rgba(0, 212, 255, 0.05) 50%, 
+        transparent 100%);
+    overflow: hidden;
+}
+
+.grid-line {
+    position: absolute;
+    background: rgba(0, 212, 255, 0.1);
+    transform-origin: center;
+}
+
+.grid-line-horizontal {
+    width: 100%;
+    height: 1px;
+    left: 0;
+}
+
+.grid-line-vertical {
+    width: 1px;
+    height: 100%;
+    top: 0;
+}
+
+/* Particle Field */
+.particle-field {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.field-particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
     border-radius: 50%;
-    top: -4px;
+    opacity: 0.6;
+}
+
+/* AI Waveform */
+.ai-waveform {
+    position: absolute;
+    bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
-    box-shadow: var(--glow-primary);
+    width: 300px;
+    height: 60px;
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    z-index: 2;
 }
+
+.wave-bar {
+    flex: 1;
+    background: linear-gradient(to top, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+    animation: waveAnimation 2s ease-in-out infinite;
+}
+
+.wave-bar:nth-child(1) { animation-delay: 0s; height: 20px; }
+.wave-bar:nth-child(2) { animation-delay: 0.1s; height: 35px; }
+.wave-bar:nth-child(3) { animation-delay: 0.2s; height: 45px; }
+.wave-bar:nth-child(4) { animation-delay: 0.3s; height: 30px; }
+.wave-bar:nth-child(5) { animation-delay: 0.4s; height: 25px; }
+.wave-bar:nth-child(6) { animation-delay: 0.5s; height: 40px; }
+.wave-bar:nth-child(7) { animation-delay: 0.6s; height: 35px; }
+.wave-bar:nth-child(8) { animation-delay: 0.7s; height: 28px; }
+
+/* Glow Trails */
+.glow-trail {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.trail-particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0;
+    animation: trailAnimation 3s ease-in-out infinite;
+}
+
+.trail-particle:nth-child(1) { top: 30%; left: 20%; animation-delay: 0s; }
+.trail-particle:nth-child(2) { top: 60%; left: 70%; animation-delay: 0.5s; }
+.trail-particle:nth-child(3) { top: 40%; left: 50%; animation-delay: 1s; }
+.trail-particle:nth-child(4) { top: 70%; left: 30%; animation-delay: 1.5s; }
+.trail-particle:nth-child(5) { top: 25%; left: 60%; animation-delay: 2s; }
 
 /* Hero Animations */
 @keyframes logoGlow {
@@ -327,6 +422,92 @@
 @keyframes particleFloat {
     0%, 100% { transform: translateY(0) scale(1); opacity: 0.8; }
     50% { transform: translateY(-20px) scale(1.2); opacity: 1; }
+}
+
+@keyframes waveAnimation {
+    0%, 100% { transform: scaleY(0.5); opacity: 0.3; }
+    50% { transform: scaleY(1); opacity: 1; }
+}
+
+@keyframes trailAnimation {
+    0% { opacity: 0; transform: scale(0); }
+    50% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0); }
+}
+
+@keyframes gridPulse {
+    0%, 100% { opacity: 0.1; }
+    50% { opacity: 0.3; }
+}
+
+/* Button Particle Burst */
+.btn.particle-burst {
+    position: relative;
+    overflow: visible;
+}
+
+.btn-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .neural-graphic {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .hero-actions {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .ai-waveform {
+        width: 200px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .logo-main {
+        font-size: 3rem;
+    }
+    
+    .neural-graphic {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .ai-waveform {
+        bottom: 30px;
+        width: 150px;
+        height: 30px;
+    }
 }
 
 .scroll-indicator {

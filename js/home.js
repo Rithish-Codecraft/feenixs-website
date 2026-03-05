@@ -1,4 +1,4 @@
-// Home Page Specific JavaScript
+// Home Page Specific JavaScript with Advanced AI Aesthetic
 
 // Initialize home page when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -8,25 +8,35 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize scroll animations
     initScrollAnimations();
     
-    // Initialize smooth scroll behavior
+    // Initialize smooth scroll
     initSmoothScroll();
+    
+    // Initialize parallax effects
+    initParallaxEffects();
+    
+    // Initialize intersection observer
+    initIntersectionObserver();
+    
+    // Initialize mouse tracking
+    initMouseTracking();
+    
+    // Initialize particle burst on buttons
+    initParticleBurst();
+    
+    // Initialize AI grid animation
+    initAIGridAnimation();
+    
+    // Initialize AI waveform
+    initAIWaveform();
+    
+    // Initialize glow trails
+    initGlowTrails();
+    
+    // Initialize scroll progress
+    initScrollProgress();
 });
 
-// Loading Screen
-function initLoadingScreen() {
-    const loadingScreen = document.getElementById('loading-screen');
-    
-    if (!loadingScreen) return;
-    
-    setTimeout(() => {
-        loadingScreen.classList.add('hidden');
-        setTimeout(() => {
-            loadingScreen.style.display = 'none';
-        }, 500);
-    }, 2000);
-}
-
-// Scroll Animations with GSAP
+// Enhanced Scroll Animations with GSAP
 function initScrollAnimations() {
     // Check if GSAP is available
     if (typeof gsap === 'undefined') {
@@ -39,145 +49,335 @@ function initScrollAnimations() {
         gsap.registerPlugin(ScrollTrigger);
     }
     
-    // Hero animations
-    gsap.from('.hero-title', {
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        delay: 0.5
-    });
-    
-    gsap.from('.hero-subtitle', {
-        y: 30,
-        opacity: 0,
-        duration: 1,
-        delay: 0.8
-    });
-    
-    gsap.from('.hero-actions', {
-        y: 30,
-        opacity: 0,
-        duration: 1,
-        delay: 1.1
-    });
-    
-    // Quick preview cards animation
+    // Hero content animations with stagger
     if (typeof ScrollTrigger !== 'undefined') {
-        gsap.utils.toArray('.preview-card').forEach((card, index) => {
-            gsap.from(card, {
-                scrollTrigger: {
-                    trigger: card,
-                    start: 'top 80%',
-                    toggleActions: 'play none none reverse'
-                },
-                y: 50,
-                opacity: 0,
-                duration: 0.8,
-                delay: index * 0.1
-            });
+        gsap.from('.hero-text', {
+            scrollTrigger: {
+                trigger: '.hero',
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            },
+            x: -50,
+            opacity: 0,
+            duration: 1.2,
+            ease: 'power3.out'
         });
-    } else {
-        // Fallback without ScrollTrigger
-        gsap.utils.toArray('.preview-card').forEach((card, index) => {
-            gsap.from(card, {
-                y: 50,
-                opacity: 0,
-                duration: 0.8,
-                delay: 1.5 + index * 0.1
-            });
+        
+        gsap.from('.hero-title', {
+            scrollTrigger: {
+                trigger: '.hero',
+                start: 'top 70%',
+                toggleActions: 'play none none reverse'
+            },
+            y: 30,
+            opacity: 0,
+            duration: 1,
+            ease: 'power2.out'
+        });
+        
+        gsap.from('.hero-actions', {
+            scrollTrigger: {
+                trigger: '.hero',
+                start: 'top 60%',
+                toggleActions: 'play none none reverse'
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            ease: 'power2.out'
+        });
+        
+        // Neural graphic animation
+        gsap.from('.neural-graphic', {
+            scrollTrigger: {
+                trigger: '.hero',
+                start: 'top 50%',
+                toggleActions: 'play none none reverse'
+            },
+            scale: 0.5,
+            opacity: 0,
+            duration: 1.5,
+            ease: 'elastic.out(1, 0.5)'
+        });
+        
+        // AI Grid Floor animation
+        gsap.from('.ai-grid-floor', {
+            scrollTrigger: {
+                trigger: '.hero',
+                start: 'top 30%',
+                toggleActions: 'play none none reverse'
+            },
+            y: 100,
+            opacity: 0,
+            duration: 2,
+            ease: 'power4.out'
+        });
+        
+        // Particle field animation
+        gsap.from('.particle-field', {
+            scrollTrigger: {
+                trigger: '.hero',
+                start: 'top 20%',
+                toggleActions: 'play none none reverse'
+            },
+            opacity: 0,
+            duration: 1.5,
+            ease: 'power2.out'
+        });
+        
+        // AI Waveform animation
+        gsap.from('.ai-waveform', {
+            scrollTrigger: {
+                trigger: '.hero',
+                start: 'top 10%',
+                toggleActions: 'play none none reverse'
+            },
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            ease: 'power3.out'
+        });
+        
+        // Glow trails animation
+        gsap.from('.glow-trail', {
+            scrollTrigger: {
+                trigger: '.hero',
+                start: 'top 5%',
+                toggleActions: 'play none none reverse'
+            },
+            opacity: 0,
+            duration: 1.8,
+            ease: 'power4.out'
         });
     }
 }
 
-// Smooth Scroll Behavior
+// Enhanced Smooth Scroll with Parallax
 function initSmoothScroll() {
-    // Smooth scroll for anchor links
+    // Smooth scroll for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+        anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
-            
             if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                const offsetTop = target.offsetTop - 80;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
                 });
             }
         });
     });
     
-    // Add parallax effect to hero section
-    const hero = document.querySelector('.hero');
-    const heroVisual = document.querySelector('.hero-visual');
-    
-    if (hero && heroVisual) {
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const parallax = scrolled * 0.5;
-            
-            heroVisual.style.transform = `translateY(${parallax}px)`;
-        });
-    }
-}
-
-// Add interactive hover effects for preview cards
-document.addEventListener('DOMContentLoaded', function() {
-    const previewCards = document.querySelectorAll('.preview-card');
-    
-    previewCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            // Add glow effect on hover
-            this.style.boxShadow = '0 20px 40px rgba(0, 212, 255, 0.2)';
+    // Subtle parallax on scroll
+    let ticking = false;
+    function updateParallax() {
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll('.neural-graphic, .ai-grid-floor, .particle-field');
+        
+        parallaxElements.forEach((element, index) => {
+            const speed = 0.5 + (index * 0.1);
+            const yPos = -(scrolled * speed);
+            element.style.transform = `translateY(${yPos}px)`;
         });
         
-        card.addEventListener('mouseleave', function() {
-            // Remove glow effect
-            this.style.boxShadow = '';
-        });
-    });
-});
-
-// Add typing effect to hero title (optional enhancement)
-function initTypingEffect() {
-    const heroTitle = document.querySelector('.hero-title .highlight');
-    if (!heroTitle) return;
+        ticking = false;
+    }
     
-    const text = heroTitle.textContent;
-    heroTitle.textContent = '';
-    heroTitle.style.borderRight = '3px solid #00d4ff';
-    heroTitle.style.animation = 'blink 1s infinite';
-    
-    let index = 0;
-    
-    function type() {
-        if (index < text.length) {
-            heroTitle.textContent += text.charAt(index);
-            index++;
-            setTimeout(type, 100);
-        } else {
-            heroTitle.style.borderRight = 'none';
-            heroTitle.style.animation = 'none';
+    function requestTick() {
+        if (!ticking) {
+            window.requestAnimationFrame(updateParallax);
+            ticking = true;
         }
     }
     
-    // Start typing after loading screen
-    setTimeout(type, 2500);
+    window.addEventListener('scroll', requestTick);
 }
 
-// Add blinking cursor animation
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes blink {
-        0%, 50% { border-color: transparent; }
-        51%, 100% { border-color: #00d4ff; }
+// Enhanced Parallax Effects
+function initParallaxEffects() {
+    const heroSection = document.querySelector('.hero');
+    if (!heroSection) return;
+    
+    // Mouse parallax for neural graphic
+    heroSection.addEventListener('mousemove', (e) => {
+        const neuralGraphic = document.querySelector('.neural-graphic');
+        if (!neuralGraphic) return;
+        
+        const rect = heroSection.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const moveX = (x - centerX) * 0.02;
+        const moveY = (y - centerY) * 0.02;
+        
+        gsap.to(neuralGraphic, {
+            x: moveX,
+            y: moveY,
+            duration: 0.5,
+            ease: 'power2.out'
+        });
+    });
+    
+    // Reset position on mouse leave
+    heroSection.addEventListener('mouseleave', () => {
+        const neuralGraphic = document.querySelector('.neural-graphic');
+        if (neuralGraphic) {
+            gsap.to(neuralGraphic, {
+                x: 0,
+                y: 0,
+                duration: 0.5,
+                ease: 'power2.out'
+            });
+        }
+    });
+}
+
+// Enhanced Mouse Tracking
+function initMouseTracking() {
+    const neuralGraphic = document.querySelector('.neural-graphic');
+    if (!neuralGraphic) return;
+    
+    let mouseX = 0;
+    let mouseY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+    
+    // Smooth follow animation
+    function animateNeuralGraphic() {
+        const dx = mouseX - currentX;
+        const dy = mouseY - currentY;
+        
+        currentX += dx * 0.05;
+        currentY += dy * 0.05;
+        
+        const coreNode = neuralGraphic.querySelector('.core-node');
+        if (coreNode) {
+            const moveX = dx * 0.02;
+            const moveY = dy * 0.02;
+            
+            gsap.to(coreNode, {
+                x: moveX,
+                y: moveY,
+                duration: 0.3,
+                ease: 'power2.out'
+            });
+        }
+        
+        requestAnimationFrame(animateNeuralGraphic);
     }
-`;
-document.head.appendChild(style);
+    
+    animateNeuralGraphic();
+}
 
-// Initialize typing effect if enabled
-// initTypingEffect(); // Uncomment to enable typing effect
+// Enhanced Particle Burst on Button Hover
+function initParticleBurst() {
+    const buttons = document.querySelectorAll('.btn');
+    
+    buttons.forEach(button => {
+        button.addEventListener('mouseenter', (e) => {
+            createParticleBurst(e.target);
+        });
+    });
+}
 
-// Add intersection observer for fade-in animations
+function createParticleBurst(button) {
+    const rect = button.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    
+    // Create burst particles
+    for (let i = 0; i < 12; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'btn-particle';
+        
+        const angle = (Math.PI * 2 * i) / 12;
+        const velocity = 2 + Math.random() * 3;
+        const lifetime = 1000 + Math.random() * 1000;
+        
+        particle.style.left = centerX + 'px';
+        particle.style.top = centerY + 'px';
+        
+        document.body.appendChild(particle);
+        
+        // Animate particle
+        gsap.fromTo(particle, {
+            x: Math.cos(angle) * velocity,
+            y: Math.sin(angle) * velocity,
+            opacity: [0, 1, 0],
+            scale: [0, 1, 0],
+            duration: lifetime / 1000,
+            ease: 'power2.out'
+        });
+        
+        // Remove particle after animation
+        setTimeout(() => {
+            particle.remove();
+        }, lifetime);
+    }
+}
+
+// AI Grid Animation
+function initAIGridAnimation() {
+    const gridLines = document.querySelectorAll('.grid-line');
+    
+    gridLines.forEach((line, index) => {
+        // Animate grid lines with stagger
+        gsap.fromTo(line, {
+            opacity: [0.1, 0.3, 0.1],
+            duration: 3 + Math.random() * 2,
+            repeat: -1,
+            ease: 'power2.inOut'
+        });
+    });
+}
+
+// AI Waveform Animation
+function initAIWaveform() {
+    const waveBars = document.querySelectorAll('.wave-bar');
+    
+    // Continuous waveform animation
+    function animateWaveform() {
+        waveBars.forEach((bar, index) => {
+            const randomHeight = 20 + Math.random() * 25;
+            gsap.to(bar, {
+                height: randomHeight,
+                duration: 0.5 + Math.random() * 0.5,
+                ease: 'power2.inOut'
+            });
+        });
+    }
+    
+    // Start continuous animation
+    setInterval(animateWaveform, 2000);
+}
+
+// Glow Trails Animation
+function initGlowTrails() {
+    const trailParticles = document.querySelectorAll('.trail-particle');
+    
+    trailParticles.forEach((particle, index) => {
+        // Animate trail particles with different timings
+        gsap.to(particle, {
+            opacity: [0, 1, 0],
+            scale: [0, 1.5, 0],
+            duration: 3,
+            repeat: -1,
+            delay: index * 0.3,
+            ease: 'power2.inOut'
+        });
+    });
+}
+
+// Enhanced Intersection Observer
 function initIntersectionObserver() {
     const options = {
         threshold: 0.1,
@@ -187,54 +387,18 @@ function initIntersectionObserver() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in');
-                observer.unobserve(entry.target);
+                entry.target.classList.add('animate-in');
             }
         });
     }, options);
     
-    // Observe all sections
-    document.querySelectorAll('section').forEach(section => {
-        observer.observe(section);
+    // Observe all animated elements
+    document.querySelectorAll('.hero-text, .hero-title, .hero-actions, .neural-graphic').forEach(el => {
+        observer.observe(el);
     });
 }
 
-// Initialize intersection observer
-initIntersectionObserver();
-
-// Add CSS for fade-in animation
-const fadeStyle = document.createElement('style');
-fadeStyle.textContent = `
-    .fade-in {
-        animation: fadeInUp 0.8s ease forwards;
-    }
-    
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-`;
-document.head.appendChild(fadeStyle);
-
-// Add mouse tracking effect for neural graphic
-function initMouseTracking() {
-    const neuralGraphic = document.querySelector('.neural-graphic');
-    if (!neuralGraphic) return;
-    
-    document.addEventListener('mousemove', (e) => {
-        const { clientX, clientY } = e;
-        const { left, top, width, height } = neuralGraphic.getBoundingClientRect();
-        
-        const centerX = left + width / 2;
-        const centerY = top + height / 2;
-        
-        const angleX = (clientY - centerY) / 30;
+// Scroll Progress Indicator
         const angleY = (clientX - centerX) / 30;
         
         neuralGraphic.style.transform = `perspective(1000px) rotateX(${-angleX}deg) rotateY(${angleY}deg)`;
