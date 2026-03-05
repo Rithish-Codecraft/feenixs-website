@@ -2,6 +2,9 @@
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Load Google Auth script first
+    loadGoogleAuth();
+    
     // Initialize particle system
     initParticleSystem();
     
@@ -26,6 +29,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check authentication status
     checkAuthStatus();
 });
+
+// Load Google Auth script
+function loadGoogleAuth() {
+    const script = document.createElement('script');
+    script.src = 'js/google-auth.js';
+    script.async = true;
+    document.head.appendChild(script);
+}
 
 // Particle System
 function initParticleSystem() {
@@ -513,25 +524,50 @@ async function saveUsersToCSV(users) {
 function updateAuthUI(isLoggedIn) {
     const loginBtn = document.getElementById('login-btn');
     const registerBtn = document.getElementById('register-btn');
+    const userMenu = document.getElementById('user-menu');
     
     if (isLoggedIn) {
         const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        if (loginBtn) {
-            loginBtn.textContent = `Welcome, ${currentUser.username}`;
-            loginBtn.onclick = () => logout();
-        }
-        if (registerBtn) {
-            registerBtn.style.display = 'none';
+        
+        // Hide login/register buttons
+        if (loginBtn) loginBtn.style.display = 'none';
+        if (registerBtn) registerBtn.style.display = 'none';
+        
+        // Show user menu
+        if (userMenu) {
+            userMenu.innerHTML = `
+                <div class="user-info">
+                    ${currentUser.picture ? 
+                        `<img src="${currentUser.picture}" alt="${currentUser.name || currentUser.username}" class="user-avatar">` : 
+                        `<div class="user-avatar-placeholder">${(currentUser.name || currentUser.username).charAt(0).toUpperCase()}</div>`
+                    }
+                    <span class="user-name">${currentUser.name || currentUser.username}</span>
+                    <button id="logout-btn" class="logout-btn">Logout</button>
+                </div>
+            `;
+            userMenu.style.display = 'block';
+            
+            // Add logout functionality
+            const logoutBtn = document.getElementById('logout-btn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', logout);
+            }
         }
     } else {
+        // Show login/register buttons
         if (loginBtn) {
-            loginBtn.textContent = 'Login';
+            loginBtn.style.display = 'inline-block';
             loginBtn.onclick = () => {
                 document.getElementById('login-btn').click();
             };
         }
         if (registerBtn) {
             registerBtn.style.display = 'inline-block';
+        }
+        
+        // Hide user menu
+        if (userMenu) {
+            userMenu.style.display = 'none';
         }
     }
 }
