@@ -1,0 +1,526 @@
++<div class="3"></div><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feenixs - Advanced AI Systems & Future Computing</title>
+    <meta name="description" content="Building next-generation AI systems, intelligent platforms, and advanced computational technologies.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/glassmorphism.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/readability-improvements.css">
+    <link rel="stylesheet" href="css/user-paths.css">
+    <link rel="stylesheet" href="css/section-dividers.css">
+    <link rel="stylesheet" href="css/micro-interactions.css">
+    <link rel="stylesheet" href="css/loading-feedback.css">
+    <link rel="stylesheet" href="css/mobile-optimizations.css">
+    <link rel="stylesheet" href="css/zoom-animation.css">
+    <link rel="stylesheet" href="css/3d-hover-animation.css">
+    <link rel="stylesheet" href="css/storytelling-animation.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+    
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="ai-loader">
+                <div class="neural-network">
+                    <div class="node"></div>
+                    <div class="node"></div>
+                    <div class="node"></div>
+                    <div class="node"></div>
+                </div>
+            </div>
+            <h2 class="loading-text">Initializing Neural Networks...</h2>
+        </div>
+    </div>
+
+    <!-- Video Background -->
+    <div class="video-background">
+        <video id="bg-video" autoplay muted loop playsinline>
+            <source src="assets/videos/neural-network-bg.mp4" type="video/mp4">
+            <!-- Fallback for browsers that don't support video -->
+            <div class="video-fallback"></div>
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
+    <!-- Particle Canvas -->
+    <canvas id="particle-canvas" class="particle-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">FEENIXS</span>
+                <div class="logo-glow"></div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="pages/vision.html" class="nav-link">Vision</a></li>
+                <li><a href="pages/technologies.html" class="nav-link">Technologies</a></li>
+                <li><a href="pages/ai-playground.html" class="nav-link">AI Playground</a></li>
+                <li><a href="pages/developer-portal.html" class="nav-link">Developer Portal</a></li>
+                <li><a href="pages/founder.html" class="nav-link">Founder</a></li>
+                <li><a href="pages/community-feed.html" class="nav-link active">Community Feed</a></li>
+                <li><a href="pages/contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-auth">
+                <button id="login-btn" class="auth-btn">Login</button>
+                <button id="register-btn" class="auth-btn primary">Sign Up</button>
+                <div id="user-menu" style="display: none;"></div>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-logo">
+                        <span class="logo-main">FEENIXS</span>
+                        <div class="logo-glow"></div>
+                    </div>
+                    <h1 class="hero-title">Engineering the Future of Intelligence</h1>
+                    <div class="hero-actions">
+                        <a href="pages/technologies.html" class="btn primary">
+                            <span>Explore Technology</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="pages/ai-playground.html" class="btn secondary">
+                            <span>Try AI Playground</span>
+                            <i class="fas fa-rocket"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <!-- Background Particles -->
+                    <div id="background-particles" class="background-particles"></div>
+                    
+                    <!-- 3D Neural Network -->
+                    <div id="neural-network-3d" class="neural-network-3d"></div>
+                    
+                    <!-- Hero Particles -->
+                    <div id="hero-particles" class="hero-particles"></div>
+                    
+                    <div class="neural-graphic">
+                        <div class="core-node"></div>
+                        <div class="orbit orbit-1"></div>
+                        <div class="orbit orbit-2"></div>
+                        <div class="orbit orbit-3"></div>
+                        <div class="neural-particles">
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- AI Grid Floor -->
+                    <div class="ai-grid-floor">
+                        <div class="grid-line grid-line-horizontal" style="top: 20%;"></div>
+                        <div class="grid-line grid-line-horizontal" style="top: 40%;"></div>
+                        <div class="grid-line grid-line-horizontal" style="top: 60%;"></div>
+                        <div class="grid-line grid-line-horizontal" style="top: 80%;"></div>
+                        <div class="grid-line grid-line-vertical" style="left: 25%;"></div>
+                        <div class="grid-line grid-line-vertical" style="left: 50%;"></div>
+                        <div class="grid-line grid-line-vertical" style="left: 75%;"></div>
+                    </div>
+                    
+                    <!-- Particle Field -->
+                    <div class="particle-field">
+                        <div class="field-particle" style="top: 15%; left: 10%;"></div>
+                        <div class="field-particle" style="top: 25%; left: 85%;"></div>
+                        <div class="field-particle" style="top: 45%; left: 15%;"></div>
+                        <div class="field-particle" style="top: 65%; left: 90%;"></div>
+                        <div class="field-particle" style="top: 35%; left: 55%;"></div>
+                        <div class="field-particle" style="top: 75%; left: 25%;"></div>
+                        <div class="field-particle" style="top: 55%; left: 70%;"></div>
+                        <div class="field-particle" style="top: 85%; left: 45%;"></div>
+                    </div>
+                    
+                    <!-- AI Waveform -->
+                    <div class="ai-waveform">
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                    </div>
+                    
+                    <!-- Glow Trails -->
+                    <div class="glow-trail">
+                        <div class="trail-particle"></div>
+                        <div class="trail-particle"></div>
+                        <div class="trail-particle"></div>
+                        <div class="trail-particle"></div>
+                        <div class="trail-particle"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Divider -->
+        <div class="divider-glow-line"></div>
+
+        <!-- What is Feenixs Section -->
+        <section class="what-is-feenixs">
+            <div class="container">
+                <div class="feenixs-explanation">
+                    <div class="explanation-content">
+                        <h2 class="explanation-title">What is Feenixs?</h2>
+                        <p class="explanation-text">
+                            Feenixs is a research-driven AI platform focused on building intelligent systems, advanced computational architectures, and next-generation AI tools.
+                        </p>
+                        <div class="explanation-features">
+                            <div class="feature-item">
+                                <i class="fas fa-brain"></i>
+                                <span>Intelligent Systems</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-microchip"></i>
+                                <span>Advanced Computing</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-rocket"></i>
+                                <span>Next-Gen AI Tools</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation-visual">
+                        <div class="explanation-graphic">
+                            <div class="core-circle"></div>
+                            <div class="orbit orbit-1"></div>
+                            <div class="orbit orbit-2"></div>
+                            <div class="orbit orbit-3"></div>
+                            <div class="data-points">
+                                <div class="data-point"></div>
+                                <div class="data-point"></div>
+                                <div class="data-point"></div>
+                                <div class="data-point"></div>
+                                <div class="data-point"></div>
+                                <div class="data-point"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Divider -->
+        <div class="divider-gradient"></div>
+
+        <!-- User Paths Section -->
+        <section class="user-paths">
+            <div class="container">
+                <div class="paths-header">
+                    <h2 class="paths-title">What Brings You Here?</h2>
+                    <p class="paths-subtitle">Choose your path and discover what Feenixs offers for you</p>
+                </div>
+                
+                <div class="paths-grid">
+                    <!-- Curious Visitor Path -->
+                    <div class="path-card visitor">
+                        <div class="path-icon">
+                            <i class="fas fa-user-astronaut"></i>
+                        </div>
+                        <div class="path-content">
+                            <h3>Curious Visitor</h3>
+                            <p>Discover the vision and mission behind Feenixs</p>
+                            <div class="path-features">
+                                <span class="feature-tag">Learn About AI</span>
+                                <span class="feature-tag">Explore Vision</span>
+                                <span class="feature-tag">Meet the Founder</span>
+                            </div>
+                            <div class="path-actions">
+                                <a href="pages/vision.html" class="btn primary">
+                                    <span>Read Vision</span>
+                                    <i class="fas fa-book-open"></i>
+                                </a>
+                                <a href="pages/founder.html" class="btn secondary">
+                                    <span>Meet Founder</span>
+                                    <i class="fas fa-user"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="path-glow"></div>
+                    </div>
+
+                    <!-- Developer Path -->
+                    <div class="path-card developer">
+                        <div class="path-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="path-content">
+                            <h3>Developer</h3>
+                            <p>Access powerful tools and cutting-edge technologies</p>
+                            <div class="path-features">
+                                <span class="feature-tag">API Documentation</span>
+                                <span class="feature-tag">Developer Tools</span>
+                                <span class="feature-tag">AI Playground</span>
+                            </div>
+                            <div class="path-actions">
+                                <a href="pages/technologies.html" class="btn primary">
+                                    <span>Explore Technology</span>
+                                    <i class="fas fa-microchip"></i>
+                                </a>
+                                <a href="pages/developer-portal.html" class="btn secondary">
+                                    <span>Developer Portal</span>
+                                    <i class="fas fa-terminal"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="path-glow"></div>
+                    </div>
+
+                    <!-- Community Member Path -->
+                    <div class="path-card community">
+                        <div class="path-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="path-content">
+                            <h3>Community Member</h3>
+                            <p>Connect with innovators and shape the future together</p>
+                            <div class="path-features">
+                                <span class="feature-tag">Join Discussions</span>
+                                <span class="feature-tag">Share Ideas</span>
+                                <span class="feature-tag">Network</span>
+                            </div>
+                            <div class="path-actions">
+                                <a href="pages/community-feed.html" class="btn primary">
+                                    <span>Join Community</span>
+                                    <i class="fas fa-comments"></i>
+                                </a>
+                                <a href="pages/ai-playground.html" class="btn secondary">
+                                    <span>Try AI Playground</span>
+                                    <i class="fas fa-rocket"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="path-glow"></div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions Bar -->
+                <div class="quick-actions-bar">
+                    <div class="quick-actions-content">
+                        <div class="quick-info">
+                            <h4>Not sure where to start?</h4>
+                            <p>Try our AI Playground to experience Feenixs technology firsthand</p>
+                        </div>
+                        <div class="quick-buttons">
+                            <a href="pages/ai-playground.html" class="btn primary large">
+                                <i class="fas fa-play"></i>
+                                <span>Try AI Playground</span>
+                            </a>
+                            <a href="pages/vision.html" class="btn secondary large">
+                                <i class="fas fa-compass"></i>
+                                <span>Explore Vision</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Divider -->
+        <div class="divider-wave"></div>
+
+        <!-- Quick Preview Section -->
+        <section class="quick-preview">
+            <div class="container">
+                <div class="preview-grid">
+                    <div class="preview-card">
+                        <div class="preview-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>AI Vision</h3>
+                        <p>Revolutionizing artificial intelligence and human-AI interaction</p>
+                        <a href="pages/vision.html" class="preview-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="preview-card">
+                        <div class="preview-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h3>Technologies</h3>
+                        <p>Cutting-edge research in AI, ML, and advanced computing</p>
+                        <a href="pages/technologies.html" class="preview-link">Explore <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="preview-card">
+                        <div class="preview-icon">
+                            <i class="fas fa-user-astronaut"></i>
+                        </div>
+                        <h3>Founder</h3>
+                        <p>Meet Rithish, the visionary behind Feenixs</p>
+                        <a href="pages/founder.html" class="preview-link">Discover <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+        <!-- Section Divider -->
+        <div class="divider-dots"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">FEENIXS</div>
+                    <p>Building the future of artificial intelligence and advanced computing systems.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Technologies</h4>
+                        <ul>
+                            <li><a href="pages/technologies.html">Artificial Intelligence</a></li>
+                            <li><a href="pages/technologies.html">Machine Learning</a></li>
+                            <li><a href="pages/technologies.html">Advanced Computing</a></li>
+                            <li><a href="pages/technologies.html">Human-AI Systems</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="pages/vision.html">Our Vision</a></li>
+                            <li><a href="pages/founder.html">Founder</a></li>
+                            <li><a href="pages/community.html">Community</a></li>
+                            <li><a href="pages/contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="#" id="privacy-link">Privacy Policy</a></li>
+                            <li><a href="#" id="terms-link">Terms of Service</a></li>
+                            <li><a href="#" id="data-policy-link">Data Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Feenixs. All rights reserved. | Building tomorrow's AI today.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="auth-title">Login</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="auth-form">
+                    <div id="login-fields" class="auth-fields">
+                        <div class="form-group">
+                            <input type="email" id="login-email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="login-password" placeholder="Password" required>
+                        </div>
+                    </div>
+                    <div id="register-fields" class="auth-fields" style="display: none;">
+                        <div class="form-group">
+                            <input type="text" id="register-username" placeholder="Username" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="register-email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="register-password" placeholder="Password" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="register-confirm-password" placeholder="Confirm Password" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn primary full-width" id="auth-submit">Login</button>
+                </form>
+                
+                <div class="google-signin-separator">
+                    <span>OR</span>
+                </div>
+                
+                <div id="google-signin-button"></div>
+                
+                <div class="auth-switch">
+                    <span id="auth-switch-text">Don't have an account?</span>
+                    <a href="#" id="auth-switch-link">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Legal Modals -->
+    <div id="privacy-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Privacy Policy</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>Data Collection</h3>
+                <p>We collect information you provide directly to us, such as when you create an account, send us a message, or participate in our community chat.</p>
+                
+                <h3>Data Usage</h3>
+                <p>Your data is used to provide and improve our services, communicate with you, and analyze usage patterns to enhance user experience.</p>
+                
+                <h3>Data Storage</h3>
+                <p>All user data is stored securely in CSV files within our repository and is protected using industry-standard encryption methods.</p>
+                
+                <h3>Your Rights</h3>
+                <p>You have the right to access, update, or delete your personal information at any time by contacting us.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="terms-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Terms of Service</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>Acceptance of Terms</h3>
+                <p>By accessing and using Feenixs services, you accept and agree to be bound by the terms and provision of this agreement.</p>
+                
+                <h3>Use License</h3>
+                <p>Permission is granted to temporarily access the materials (information and software) on Feenixs website for personal, non-commercial transitory viewing only.</p>
+                
+                <h3>User Responsibilities</h3>
+                <p>Users are responsible for maintaining the confidentiality of their account and password and for restricting access to their account.</p>
+                
+                <h3>Service Availability</h3>
+                <p>We strive to maintain high availability of our services but cannot guarantee uninterrupted access at all times.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/shared.js"></script>
+    <script src="js/home.js"></script>
+</body>
+</html>
