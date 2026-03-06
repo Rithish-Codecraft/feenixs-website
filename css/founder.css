@@ -1,5 +1,13 @@
 /* Founder Page Specific Styles */
 
+/* Disable all transitions on founder page */
+.founder-profile *,
+.founder-profile *::before,
+.founder-profile *::after {
+    transition: none !important;
+    animation: none !important;
+}
+
 /* Founder Profile Section */
 .founder-profile {
     padding: 5rem 0;
@@ -33,7 +41,7 @@
     font-size: 4rem;
     color: var(--dark-bg);
     box-shadow: var(--glow-accent);
-    animation: avatarGlow 3s infinite;
+    animation: none !important;
     overflow: hidden;
 }
 
@@ -45,12 +53,12 @@
     border-radius: 50%;
     position: relative;
     z-index: 2;
-    transition: all 0.3s ease;
+    transition: none !important;
 }
 
 .founder-profile-image:hover {
-    transform: scale(1.05);
-    filter: brightness(1.1);
+    transform: none !important;
+    filter: none !important;
 }
 
 .founder-fallback-icon {
@@ -80,7 +88,7 @@
     filter: blur(30px);
     border-radius: 50%;
     z-index: -1;
-    animation: glowPulse 3s infinite;
+    animation: none !important;
 }
 
 @keyframes glowPulse {
@@ -100,25 +108,25 @@
 }
 
 .social-link {
-    width: 40px;
-    height: 40px;
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-secondary);
+    width: 50px;
+    height: 50px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    color: var(--glass-text);
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: none !important;
 }
 
 .social-link:hover {
-    background: var(--gradient-primary);
-    border-color: var(--primary-color);
-    color: var(--dark-bg);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+    background: var(--glass-bg-light);
+    border-color: var(--glass-accent);
+    color: var(--glass-accent);
+    transform: none !important;
+    box-shadow: none !important;
 }
 
 .founder-info h2 {

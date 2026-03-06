@@ -2,27 +2,46 @@
 
 // Initialize founder page when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Disable animations on founder page
+    disableFounderPageAnimations();
+    
     // Initialize founder image
     initFounderImage();
     
-    // Initialize scroll animations
-    initScrollAnimations();
-    
-    // Initialize profile interactions
+    // Initialize profile interactions (without animations)
     initProfileInteractions();
     
-    // Initialize expertise level animations
-    initExpertiseAnimations();
+    // Initialize expertise level animations (disabled)
+    // initExpertiseAnimations();
     
-    // Initialize timeline interactions
+    // Initialize timeline interactions (without animations)
     initTimelineInteractions();
     
-    // Initialize smooth scroll
-    initSmoothScroll();
+    // Initialize smooth scroll (disabled for founder page)
+    // initSmoothScroll();
     
-    // Initialize social links
+    // Initialize social links (without hover effects)
     initSocialLinks();
 });
+
+// Disable all animations on founder page
+function disableFounderPageAnimations() {
+    // Remove scroll animation classes
+    const animatedElements = document.querySelectorAll('.scroll-fade-in, .scroll-slide-left, .scroll-slide-right, .scroll-scale-in, .scroll-rotate-in');
+    animatedElements.forEach(element => {
+        element.classList.add('visible');
+    });
+    
+    // Remove stagger animations
+    const staggerContainers = document.querySelectorAll('.stagger-container-smooth');
+    staggerContainers.forEach(container => {
+        container.classList.add('visible');
+        const items = container.querySelectorAll('.stagger-item-smooth');
+        items.forEach(item => {
+            item.classList.add('visible');
+        });
+    });
+}
 
 // Initialize Founder Image
 function initFounderImage() {
