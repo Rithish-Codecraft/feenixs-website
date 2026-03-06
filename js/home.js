@@ -471,7 +471,7 @@ function initParticleExplosion() {
 }
 
 function createParticleExplosion(x, y) {
-    const colors = ['#00d4ff', '#ff00ff', '#00ff88'];
+    const colors = ['#AC8B53', '#5374AC', '#8B5374'];
     const particleCount = 20;
     
     for (let i = 0; i < particleCount; i++) {
@@ -527,7 +527,7 @@ function initScrollProgress() {
         left: 0;
         width: 0%;
         height: 3px;
-        background: linear-gradient(90deg, #00d4ff, #00ff88);
+        background: linear-gradient(90deg, #AC8B53, #5374AC);
         z-index: 9999;
         transition: width 0.2s ease;
     `;

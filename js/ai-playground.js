@@ -231,8 +231,8 @@ function initMetricsDashboard() {
                 datasets: [{
                     label: 'Model Accuracy',
                     data: [92, 93, 94, 93.5, 94.2, 94.5],
-                    borderColor: '#00d4ff',
-                    backgroundColor: 'rgba(0, 212, 255, 0.1)',
+                    borderColor: '#AC8B53',
+                    backgroundColor: 'rgba(172, 139, 83, 0.1)',
                     tension: 0.4
                 }]
             },
@@ -337,8 +337,8 @@ function initMetricsDashboard() {
                 datasets: [{
                     label: 'User Requests',
                     data: [120, 190, 300, 500, 200, 247],
-                    borderColor: '#ff00ff',
-                    backgroundColor: 'rgba(255, 0, 255, 0.1)',
+                    borderColor: '#5374AC',
+                    backgroundColor: 'rgba(83, 116, 172, 0.1)',
                     tension: 0.4,
                     fill: true
                 }]
@@ -806,8 +806,8 @@ function visualizeData() {
             datasets: [{
                 label: 'Your Data',
                 data: data,
-                backgroundColor: 'rgba(0, 212, 255, 0.6)',
-                borderColor: '#00d4ff',
+                backgroundColor: 'rgba(172, 139, 83, 0.6)',
+                borderColor: '#AC8B53',
                 borderWidth: 2
             }]
         },

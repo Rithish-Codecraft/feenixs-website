@@ -6,11 +6,11 @@
     --glass-border: rgba(255, 255, 255, 0.1);
     --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
     --glass-highlight: rgba(255, 255, 255, 0.15);
-    --glass-active: rgba(0, 212, 255, 0.1);
+    --glass-active: rgba(172, 139, 83, 0.1);
     --glass-text: rgba(255, 255, 255, 0.9);
     --glass-text-secondary: rgba(255, 255, 255, 0.7);
-    --glass-accent: rgba(0, 212, 255, 0.2);
-    --glass-glow: 0 0 20px rgba(0, 212, 255, 0.3);
+    --glass-accent: rgba(172, 139, 83, 0.2);
+    --glass-glow: 0 0 20px rgba(172, 139, 83, 0.3);
     --glass-reflection: linear-gradient(135deg, 
         rgba(255, 255, 255, 0.1) 0%, 
         rgba(255, 255, 255, 0.05) 50%, 
@@ -45,7 +45,7 @@
 .glass:hover {
     background: var(--glass-highlight);
     border-color: var(--glass-accent);
-    box-shadow: 0 12px 40px rgba(0, 212, 255, 0.4);
+    box-shadow: 0 12px 40px rgba(172, 139, 83, 0.4);
     transform: translateY(-2px);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -53,7 +53,7 @@
 .glass:active {
     background: var(--glass-active);
     transform: translateY(0);
-    box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
+    box-shadow: 0 8px 24px rgba(172, 139, 83, 0.3);
 }
 
 /* Navigation Glassmorphism */

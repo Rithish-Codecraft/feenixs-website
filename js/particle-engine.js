@@ -12,7 +12,7 @@ class ParticleEngine {
         this.config = {
             particleCount: options.particleCount || 150,
             particleSize: options.particleSize || 2,
-            particleColor: options.particleColor || '#00d4ff',
+            particleColor: options.particleColor || '#AC8B53',
             connectionDistance: options.connectionDistance || 100,
             connectionOpacity: options.connectionOpacity || 0.2,
             mouseRadius: options.mouseRadius || 150,
@@ -498,7 +498,7 @@ const ParticlePresets = {
     neuralNetwork: {
         particleCount: 100,
         particleSize: 2,
-        particleColor: ['#00d4ff', '#ff00ff', '#00ff88'],
+        particleColor: ['#AC8B53', '#5374AC', '#8B5374'],
         connectionDistance: 80,
         connectionOpacity: 0.3,
         mouseRadius: 120,
