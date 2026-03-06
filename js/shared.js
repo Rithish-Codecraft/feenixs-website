@@ -2,6 +2,10 @@
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
+    initAllImages();
+    initSmoothScrolling();
+    initLoadingFeedback();
+    
     // Load Google Auth script first
     loadGoogleAuth();
     
@@ -1635,6 +1639,56 @@ window.LoadingFeedback = {
     showNotification,
     LoadingManager
 };
+
+// Initialize Founder Image
+function initFounderImage() {
+    const founderImage = document.querySelector('.founder-preview-image');
+    const fallbackIcon = document.querySelector('.founder-fallback-icon');
+    
+    if (founderImage) {
+        // Check if image loads successfully
+        founderImage.addEventListener('load', function() {
+            console.log('Founder image loaded successfully');
+            founderImage.style.opacity = '1';
+            founderImage.style.visibility = 'visible';
+        });
+        
+        // Handle image loading errors
+        founderImage.addEventListener('error', function() {
+            console.log('Founder image failed to load, showing fallback icon');
+            founderImage.style.display = 'none';
+            if (fallbackIcon) {
+                fallbackIcon.style.display = 'flex';
+            }
+        });
+        
+        // Force image reload if needed
+        const imgSrc = founderImage.src;
+        founderImage.src = ''; // Clear src
+        setTimeout(() => {
+            founderImage.src = imgSrc; // Reset src to force reload
+        }, 100);
+    }
+}
+
+// Initialize all images
+function initAllImages() {
+    initFounderImage();
+    
+    // Initialize logo images
+    const logoImages = document.querySelectorAll('.logo-image, .nav-logo-image, .footer-logo-image');
+    logoImages.forEach(img => {
+        img.addEventListener('load', function() {
+            img.style.opacity = '1';
+            img.style.visibility = 'visible';
+        });
+        
+        img.addEventListener('error', function() {
+            console.log('Logo image failed to load:', img.src);
+            img.style.display = 'none';
+        });
+    });
+}
 
 // Initialize Smooth Scrolling
 function initSmoothScrolling() {

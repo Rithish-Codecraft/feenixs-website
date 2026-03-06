@@ -343,7 +343,10 @@
                     </div>
                     <div class="preview-card">
                         <div class="preview-icon">
-                            <img src="images/founder.png" alt="Founder" class="founder-preview-image">
+                            <img src="images/founder.png" alt="Founder" class="founder-preview-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="founder-fallback-icon" style="display: none;">
+                                <i class="fas fa-user-astronaut elegant-text gradient"></i>
+                            </div>
                         </div>
                         <h3>Founder</h3>
                         <p>Meet Rithish, the visionary behind Feenixs</p>
