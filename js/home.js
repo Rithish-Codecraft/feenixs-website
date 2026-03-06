@@ -5,6 +5,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize loading screen
     initLoadingScreen();
     
+    // Initialize 3D neural network
+    init3DNeuralNetwork();
+    
     // Initialize scroll animations
     initScrollAnimations();
     
@@ -399,21 +402,64 @@ function initIntersectionObserver() {
 }
 
 // Scroll Progress Indicator
-        const angleY = (clientX - centerX) / 30;
-        
-        neuralGraphic.style.transform = `perspective(1000px) rotateX(${-angleX}deg) rotateY(${angleY}deg)`;
-    });
+function initScrollProgress() {
+    const progressBar = document.createElement('div');
+    progressBar.className = 'scroll-progress';
+    progressBar.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        z-index: 10000;
+        transition: width 0.1s ease;
+    `;
     
-    // Reset on mouse leave
-    document.addEventListener('mouseleave', () => {
-        neuralGraphic.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+    document.body.appendChild(progressBar);
+    
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        
+        progressBar.style.width = scrollPercent + '%';
     });
 }
 
-// Initialize mouse tracking
-initMouseTracking();
-
-// Add particle explosion effect on button clicks
+// Loading Screen
+function initLoadingScreen() {
+    const loadingScreen = document.getElementById('loading-screen');
+    if (!loadingScreen) return;
+    
+    // Enhanced loading animation
+    gsap.timeline()
+        .to('.loading-text', {
+            opacity: [0.5, 1, 0.5],
+            duration: 1.5,
+            repeat: -1,
+            ease: 'power2.inOut'
+        })
+        .to('.neural-network .node', {
+            scale: [1, 1.2, 1],
+            rotation: '+=360',
+            duration: 2,
+            stagger: 0.1,
+            repeat: -1,
+            ease: 'power2.inOut'
+        });
+    
+    // Hide loading screen after animation
+    setTimeout(() => {
+        gsap.to(loadingScreen, {
+            opacity: 0,
+            duration: 0.5,
+            onComplete: () => {
+                loadingScreen.style.display = 'none';
+            }
+        });
+    }, 2000);
+}
 function initParticleExplosion() {
     const buttons = document.querySelectorAll('.btn');
     

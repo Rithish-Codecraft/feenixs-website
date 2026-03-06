@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Feed - Feenixs</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/shared.css">
+    <link rel="stylesheet" href="../css/community-feed.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Socket.io for real-time updates -->
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-animation">
+                <div class="pulse-dot"></div>
+                <div class="pulse-dot"></div>
+                <div class="pulse-dot"></div>
+            </div>
+            <div class="loading-text">Connecting to Community...</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>FEENIXS</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="vision.html" class="nav-link">Vision</a></li>
+                <li><a href="technologies.html" class="nav-link">Technologies</a></li>
+                <li><a href="ai-playground.html" class="nav-link">AI Playground</a></li>
+                <li><a href="developer-portal.html" class="nav-link">Developer Portal</a></li>
+                <li><a href="founder.html" class="nav-link">Founder</a></li>
+                <li><a href="community-feed.html" class="nav-link active">Community Feed</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-auth">
+                <button id="login-btn" class="auth-btn">Login</button>
+                <button id="register-btn" class="auth-btn primary">Sign Up</button>
+                <div id="user-menu" style="display: none;"></div>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Community Feed</h1>
+                    <p>Connect with developers, share insights, and stay updated with the latest Feenixs community activity</p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" id="online-users">0</span>
+                            <span class="stat-label">Online Now</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="active-posts">0</span>
+                            <span class="stat-label">Active Posts</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="total-members">0</span>
+                            <span class="stat-label">Members</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="community-visualization">
+                        <div class="network-nodes">
+                            <div class="node"></div>
+                            <div class="node"></div>
+                            <div class="node"></div>
+                            <div class="node"></div>
+                            <div class="node"></div>
+                            <div class="node"></div>
+                            <div class="node"></div>
+                        </div>
+                        <div class="connection-lines">
+                            <div class="line"></div>
+                            <div class="line"></div>
+                            <div class="line"></div>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feed Controls -->
+        <section class="feed-controls">
+            <div class="container">
+                <div class="controls-grid">
+                    <div class="control-group">
+                        <h3>Filter Feed</h3>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-filter="all">All Posts</button>
+                            <button class="filter-btn" data-filter="announcements">Announcements</button>
+                            <button class="filter-btn" data-filter="discussions">Discussions</button>
+                            <button class="filter-btn" data-filter="showcase">Showcase</button>
+                            <button class="filter-btn" data-filter="questions">Questions</button>
+                            <button class="filter-btn" data-filter="events">Events</button>
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <h3>Sort By</h3>
+                        <div class="sort-buttons">
+                            <button class="sort-btn active" data-sort="latest">Latest</button>
+                            <button class="sort-btn" data-sort="trending">Trending</button>
+                            <button class="sort-btn" data-sort="popular">Most Popular</button>
+                            <button class="sort-btn" data-sort="following">Following</button>
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <h3>Quick Actions</h3>
+                        <div class="action-buttons">
+                            <button class="action-btn primary" onclick="createPost()">
+                                <i class="fas fa-plus"></i>
+                                <span>New Post</span>
+                            </button>
+                            <button class="action-btn secondary" onclick="refreshFeed()">
+                                <i class="fas fa-sync"></i>
+                                <span>Refresh</span>
+                            </button>
+                            <button class="action-btn secondary" onclick="toggleNotifications()">
+                                <i class="fas fa-bell"></i>
+                                <span>Notifications</span>
+                                <span class="notification-badge" id="notification-count">0</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Feed -->
+        <section class="community-feed">
+            <div class="container">
+                <div class="feed-container">
+                    <!-- Sidebar -->
+                    <aside class="feed-sidebar">
+                        <!-- Online Users -->
+                        <div class="sidebar-section">
+                            <h3><i class="fas fa-users"></i> Online Now</h3>
+                            <div class="online-users-list" id="online-users-list">
+                                <!-- Online users will be populated here -->
+                            </div>
+                        </div>
+                        
+                        <!-- Trending Topics -->
+                        <div class="sidebar-section">
+                            <h3><i class="fas fa-fire"></i> Trending Topics</h3>
+                            <div class="trending-topics" id="trending-topics">
+                                <!-- Trending topics will be populated here -->
+                            </div>
+                        </div>
+                        
+                        <!-- Upcoming Events -->
+                        <div class="sidebar-section">
+                            <h3><i class="fas fa-calendar"></i> Upcoming Events</h3>
+                            <div class="upcoming-events" id="upcoming-events">
+                                <!-- Events will be populated here -->
+                            </div>
+                        </div>
+                        
+                        <!-- Community Stats -->
+                        <div class="sidebar-section">
+                            <h3><i class="fas fa-chart-bar"></i> Community Stats</h3>
+                            <div class="community-stats">
+                                <div class="stat-row">
+                                    <span class="stat-label">Posts Today</span>
+                                    <span class="stat-value" id="posts-today">0</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">New Members</span>
+                                    <span class="stat-value" id="new-members">0</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">Active Projects</span>
+                                    <span class="stat-value" id="active-projects">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                    
+                    <!-- Main Feed -->
+                    <div class="feed-main">
+                        <div class="feed-posts" id="feed-posts">
+                            <!-- Posts will be dynamically populated here -->
+                        </div>
+                        
+                        <!-- Load More -->
+                        <div class="load-more-container">
+                            <button class="load-more-btn" id="load-more-btn" onclick="loadMorePosts()">
+                                <i class="fas fa-spinner fa-spin" id="loading-spinner" style="display: none;"></i>
+                                <span id="load-more-text">Load More Posts</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Create Post Modal -->
+    <div id="create-post-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create New Post</h3>
+                <button class="modal-close" onclick="closeCreatePostModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="create-post-form">
+                    <div class="form-group">
+                        <label for="post-type">Post Type</label>
+                        <select id="post-type" name="post-type">
+                            <option value="discussion">Discussion</option>
+                            <option value="question">Question</option>
+                            <option value="showcase">Showcase</option>
+                            <option value="announcement">Announcement</option>
+                            <option value="event">Event</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="post-title">Title</label>
+                        <input type="text" id="post-title" name="post-title" placeholder="Enter post title" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="post-content">Content</label>
+                        <textarea id="post-content" name="post-content" placeholder="Share your thoughts..." rows="6" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="post-tags">Tags</label>
+                        <input type="text" id="post-tags" name="post-tags" placeholder="Add tags (comma separated)">
+                        <div class="tag-suggestions" id="tag-suggestions">
+                            <!-- Tag suggestions will be populated here -->
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="post-visibility">Visibility</label>
+                        <select id="post-visibility" name="post-visibility">
+                            <option value="public">Public</option>
+                            <option value="community">Community Only</option>
+                            <option value="followers">Followers Only</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn secondary" onclick="closeCreatePostModal()">Cancel</button>
+                        <button type="submit" class="btn primary">Create Post</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notifications Panel -->
+    <div id="notifications-panel" class="notifications-panel">
+        <div class="notifications-header">
+            <h3>Notifications</h3>
+            <button class="close-notifications" onclick="toggleNotifications()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="notifications-list" id="notifications-list">
+            <!-- Notifications will be populated here -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Feenixs Community</h3>
+                    <p>Connecting developers worldwide</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="ai-playground.html">AI Playground</a></li>
+                        <li><a href="developer-portal.html">Developer Portal</a></li>
+                        <li><a href="community-feed.html">Community</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Community Guidelines</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">API Documentation</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>community@feenixs.com</p>
+                    <p>+1 (555) 123-4567</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Feenixs. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../js/shared.js"></script>
+    <script src="../js/community-feed.js"></script>
+</body>
+</html>

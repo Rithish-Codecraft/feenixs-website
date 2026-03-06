@@ -1,5 +1,13 @@
 // Community Page Specific JavaScript
 
+// Load secure chat script
+function loadSecureChat() {
+    const script = document.createElement('script');
+    script.src = 'js/secure-chat.js';
+    script.async = true;
+    document.head.appendChild(script);
+}
+
 // Initialize community page when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize scroll animations

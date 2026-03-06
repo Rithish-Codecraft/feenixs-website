@@ -1,0 +1,634 @@
+/* 3D Hover Animation Styles */
+
+/* Base 3D Element Styles */
+.hover-3d-element {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out;
+    cursor: pointer;
+}
+
+.hover-3d-element::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        transparent 0%, 
+        rgba(0, 212, 255, 0.1) 30%, 
+        rgba(255, 0, 255, 0.1) 70%, 
+        transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+.hover-3d-element:hover::before {
+    opacity: 1;
+}
+
+/* 3D Container */
+.hover-3d-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    pointer-events: none;
+}
+
+/* 3D Face */
+.hover-3d-face {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: inherit;
+    box-shadow: 0 10px 30px rgba(31, 38, 135, 0.3);
+}
+
+/* Particle Container */
+.hover-3d-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+/* Glow Effect */
+.hover-3d-glow {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: radial-gradient(circle, 
+        rgba(0, 212, 255, 0.3) 0%, 
+        rgba(0, 212, 255, 0.1) 30%, 
+        transparent 70%);
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Hover Particles */
+.hover-3d-hover-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    pointer-events: none;
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
+    animation: particleFloat 2s ease-in-out infinite;
+}
+
+@keyframes particleFloat {
+    0%, 100% { 
+        transform: translateY(0) scale(1); 
+        opacity: 0.8;
+    }
+    50% { 
+        transform: translateY(-20px) scale(1.2); 
+        opacity: 1;
+    }
+}
+
+/* Burst Particles */
+.hover-3d-burst-particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: particleBurst 1.5s ease-out forwards;
+}
+
+.hover-3d-burst-particle.enter {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    box-shadow: 0 0 20px rgba(0, 212, 255, 1);
+}
+
+.hover-3d-burst-particle.exit {
+    background: var(--secondary-color);
+    box-shadow: 0 0 20px rgba(255, 0, 255, 1);
+}
+
+@keyframes particleBurst {
+    0% {
+        transform: translate(0, 0) scale(0);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(var(--tx), var(--ty)) scale(1.5);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(calc(var(--tx) * 2), calc(var(--ty) * 2)) scale(0);
+        opacity: 0;
+    }
+}
+
+/* Entrance Animation */
+.hover-3d-enter {
+    animation: entrance3D 0.6s ease-out forwards;
+}
+
+@keyframes entrance3D {
+    0% {
+        transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: perspective(1000px) rotateX(5deg) rotateY(5deg) scale(1.1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Exit Animation */
+.hover-3d-exit {
+    animation: exit3D 0.6s ease-in forwards;
+}
+
+@keyframes exit3D {
+    0% {
+        transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: perspective(1000px) rotateX(-5deg) rotateY(-5deg) scale(0.9);
+        opacity: 0.8;
+    }
+    100% {
+        transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(0.8);
+        opacity: 0;
+    }
+}
+
+/* Card Specific 3D Styles */
+.hover-3d-element.card-3d {
+    transform-style: preserve-3d;
+    transition: all 0.3s ease;
+}
+
+.hover-3d-element.card-3d .hover-3d-face {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px) saturate(150%);
+    -webkit-backdrop-filter: blur(15px) saturate(150%);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: 
+        0 20px 60px rgba(31, 38, 135, 0.4),
+        inset 0 0 40px rgba(0, 212, 255, 0.1);
+}
+
+.hover-3d-element.card-3d:hover .hover-3d-face {
+    background: var(--glass-highlight);
+    border-color: var(--glass-accent);
+    box-shadow: 
+        0 25px 60px rgba(31, 38, 135, 0.5),
+        inset 0 0 50px rgba(0, 212, 255, 0.15);
+}
+
+/* Feature Card 3D */
+.hover-3d-element.feature-card {
+    transform-style: preserve-3d;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hover-3d-element.feature-card .hover-3d-face {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    border-radius: 25px;
+    box-shadow: 
+        0 25px 50px rgba(31, 38, 135, 0.45),
+        inset 0 0 30px rgba(0, 212, 255, 0.1);
+}
+
+.hover-3d-element.feature-card:hover .hover-3d-face {
+    background: var(--glass-highlight);
+    border-color: var(--glass-accent);
+    box-shadow: 
+        0 30px 70px rgba(31, 38, 135, 0.5),
+        inset 0 0 40px rgba(0, 212, 255, 0.2);
+}
+
+/* Tool Card 3D */
+.hover-3d-element.tool-card {
+    transform-style: preserve-3d;
+    transition: all 0.3s ease;
+}
+
+.hover-3d-element.tool-card .hover-3d-face {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px) saturate(150%);
+    -webkit-backdrop-filter: blur(15px) saturate(150%);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: 
+        0 20px 40px rgba(31, 38, 135, 0.4),
+        inset 0 0 30px rgba(0, 212, 255, 0.1);
+}
+
+.hover-3d-element.tool-card:hover .hover-3d-face {
+    background: var(--glass-highlight);
+    border-color: var(--glass-accent);
+    box-shadow: 
+        0 25px 50px rgba(31, 38, 135, 0.45),
+        inset 0 0 40px rgba(0, 212, 255, 0.15);
+}
+
+/* API Card 3D */
+.hover-3d-element.api-card {
+    transform-style: preserve-3d;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hover-3d-element.api-card .hover-3d-face {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px) saturate(150%);
+    -webkit-backdrop-filter: blur(15px) saturate(150%);
+    border: 1px solid var(--glass-border);
+    border-radius: 25px;
+    box-shadow: 
+        0 25px 50px rgba(31, 38, 135, 0.45),
+        inset 0 0 40px rgba(0, 212, 255, 0.15);
+}
+
+.hover-3d-element.api-card:hover .hover-3d-face {
+    background: var(--glass-highlight);
+    border-color: var(--glass-accent);
+    box-shadow: 
+        0 30px 60px rgba(31, 38, 135, 0.5),
+        inset 0 0 50px rgba(0, 212, 255, 0.2);
+}
+
+/* Post 3D */
+.hover-3d-element.post {
+    transform-style: preserve-3d;
+    transition: all 0.3s ease;
+}
+
+.hover-3d-element.post .hover-3d-face {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px) saturate(120%);
+    -webkit-backdrop-filter: blur(10px) saturate(120%);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: 
+        0 15px 30px rgba(31, 38, 135, 0.3),
+        inset 0 0 20px rgba(0, 212, 255, 0.05);
+}
+
+.hover-3d-element.post:hover .hover-3d-face {
+    background: var(--glass-highlight);
+    border-color: var(--glass-accent);
+    box-shadow: 
+        0 20px 40px rgba(31, 38, 135, 0.4),
+        inset 0 0 30px rgba(0, 212, 255, 0.1);
+}
+
+/* SDK Card 3D */
+.hover-3d-element.sdk-card {
+    transform-style: preserve-3d;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hover-3d-element.sdk-card .hover-3d-face {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px) saturate(150%);
+    -webkit-backdrop-filter: blur(15px) saturate(150%);
+    border: 1px solid var(--glass-border);
+    border-radius: 25px;
+    box-shadow: 
+        0 25px 50px rgba(31, 38, 135, 0.45),
+        inset 0 0 40px rgba(0, 212, 255, 0.15);
+}
+
+.hover-3d-element.sdk-card:hover .hover-3d-face {
+    background: var(--glass-highlight);
+    border-color: var(--glass-accent);
+    box-shadow: 
+        0 30px 70px rgba(31, 38, 135, 0.5),
+        inset 0 0 50px rgba(0, 212, 255, 0.2);
+}
+
+/* Metric Card 3D */
+.hover-3d-element.metric-card {
+    transform-style: preserve-3d;
+    transition: all 0.3s ease;
+}
+
+.hover-3d-element.metric-card .hover-3d-face {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px) saturate(150%);
+    -webkit-backdrop-filter: blur(15px) saturate(150%);
+    border: 1px solid var(--glass-border);
+    border-radius: 25px;
+    box-shadow: 
+        0 25px 50px rgba(31, 38, 135, 0.45),
+        inset 0 0 40px rgba(0, 212, 255, 0.15);
+}
+
+.hover-3d-element.metric-card:hover .hover-3d-face {
+    background: var(--glass-highlight);
+    border-color: var(--glass-accent);
+    box-shadow: 
+        0 30px 60px rgba(31, 38, 135, 0.5),
+        inset 0 0 50px rgba(0, 212, 255, 0.2);
+}
+
+/* Experiment Card 3D */
+.hover-3d-element.experiment-card {
+    transform-style: preserve-3d;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hover-3d-element.experiment-card .hover-3d-face {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px) saturate(150%);
+    -webkit-backdrop-filter: blur(15px) saturate(150%);
+    border: 1px solid var(--glass-border);
+    border-radius: 25px;
+    box-shadow: 
+        0 25px 50px rgba(31, 38, 135, 0.45),
+        inset 0 0 40px rgba(0, 212, 255, 0.15);
+}
+
+.hover-3d-element.experiment-card:hover .hover-3d-face {
+    background: var(--glass-highlight);
+    border-color: var(--glass-accent);
+    box-shadow: 
+        0 30px 70px rgba(31, 38, 135, 0.5),
+        inset 0 0 50px rgba(0, 212, 255, 0.2);
+}
+
+/* Special 3D Effects for Hero Section */
+.hover-3d-element.hero {
+    transform-style: preserve-3d;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hover-3d-element.hero .hover-3d-face {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+    box-shadow: 
+        0 30px 80px rgba(31, 38, 135, 0.5),
+        inset 0 0 60px rgba(0, 212, 255, 0.2);
+}
+
+.hover-3d-element.hero:hover .hover-3d-face {
+    background: var(--glass-highlight);
+    border-color: var(--glass-accent);
+    box-shadow: 
+        0 40px 100px rgba(31, 38, 135, 0.6),
+        inset 0 0 80px rgba(0, 212, 255, 0.3);
+}
+
+/* 3D Rotation Effects */
+.hover-3d-element.rotating {
+    animation: rotate3D 10s linear infinite;
+}
+
+@keyframes rotate3D {
+    0% {
+        transform: perspective(1000px) rotateY(0deg);
+    }
+    100% {
+        transform: perspective(1000px) rotateY(360deg);
+    }
+}
+
+/* 3D Flip Effects */
+.hover-3d-element.flipping {
+    animation: flip3D 2s ease-in-out infinite;
+}
+
+@keyframes flip3D {
+    0%, 100% {
+        transform: perspective(1000px) rotateY(0deg);
+    }
+    50% {
+        transform: perspective(1000px) rotateY(180deg);
+    }
+}
+
+/* 3D Pulse Effects */
+.hover-3d-element.pulsing {
+    animation: pulse3D 2s ease-in-out infinite;
+}
+
+@keyframes pulse3D {
+    0%, 100% {
+        transform: perspective(1000px) scale3d(1, 1, 1);
+    }
+    50% {
+        transform: perspective(1000px) scale3d(1.05, 1.05, 1.05);
+    }
+}
+
+/* 3D Float Effects */
+.hover-3d-element.floating {
+    animation: float3D 4s ease-in-out infinite;
+}
+
+@keyframes float3D {
+    0%, 100% {
+        transform: perspective(1000px) translateY(0) rotateX(0deg) rotateY(0deg);
+    }
+    25% {
+        transform: perspective(1000px) translateY(-10px) rotateX(2deg) rotateY(2deg);
+    }
+    50% {
+        transform: perspective(1000px) translateY(-5px) rotateX(-1deg) rotateY(-1deg);
+    }
+    75% {
+        transform: perspective(1000px) translateY(-15px) rotateX(1deg) rotateY(1deg);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hover-3d-element {
+        transform-style: preserve-3d;
+        transition: all 0.2s ease;
+    }
+    
+    .hover-3d-face {
+        backdrop-filter: blur(8px) saturate(120%);
+        -webkit-backdrop-filter: blur(8px) saturate(120%);
+    }
+    
+    .hover-3d-glow {
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+    }
+    
+    .hover-3d-hover-particle {
+        width: 3px;
+        height: 3px;
+    }
+    
+    .hover-3d-burst-particle {
+        width: 4px;
+        height: 4px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hover-3d-element {
+        transform-style: preserve-3d;
+        transition: all 0.15s ease;
+    }
+    
+    .hover-3d-face {
+        backdrop-filter: blur(5px) saturate(100%);
+        -webkit-backdrop-filter: blur(5px) saturate(100%);
+    }
+    
+    .hover-3d-glow {
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
+    }
+    
+    .hover-3d-hover-particle {
+        width: 2px;
+        height: 2px;
+    }
+    
+    .hover-3d-burst-particle {
+        width: 3px;
+        height: 3px;
+    }
+}
+
+/* Performance Optimizations */
+.hover-3d-element {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+.hover-3d-container {
+    will-change: transform;
+}
+
+.hover-3d-face {
+    will-change: transform;
+}
+
+.hover-3d-particles {
+    will-change: transform;
+}
+
+.hover-3d-glow {
+    will-change: opacity, filter;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .hover-3d-element {
+        transform-style: flat;
+        transition: none;
+    }
+    
+    .hover-3d-container {
+        transform-style: flat;
+    }
+    
+    .hover-3d-face {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+    
+    .hover-3d-glow {
+        display: none;
+    }
+    
+    .hover-3d-particles {
+        display: none;
+    }
+    
+    .hover-3d-enter,
+    .hover-3d-exit,
+    .rotating,
+    .flipping,
+    .pulsing,
+    .floating {
+        animation: none;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .hover-3d-face {
+        background: rgba(255, 255, 255, 0.9);
+        border-color: #000;
+    }
+    
+    .hover-3d-glow {
+        background: rgba(255, 255, 255, 0.3);
+    }
+    
+    .hover-3d-hover-particle {
+        background: #fff;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .hover-3d-face {
+        background: rgba(0, 0, 0, 0.8);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .hover-3d-glow {
+        background: radial-gradient(circle, 
+            rgba(0, 212, 255, 0.2) 0%, 
+            rgba(0, 212, 255, 0.05) 30%, 
+            transparent 70%);
+    }
+}
+
+/* Print Styles */
+@media print {
+    .hover-3d-element {
+        transform-style: flat;
+        transition: none;
+    }
+    
+    .hover-3d-container,
+    .hover-3d-particles,
+    .hover-3d-glow {
+        display: none !important;
+    }
+}

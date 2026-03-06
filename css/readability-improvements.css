@@ -1,0 +1,590 @@
+/* Readability Improvements for Feenixs Website */
+
+/* Base Typography Improvements */
+body {
+    line-height: 1.7;
+}
+
+/* Paragraph Text */
+p {
+    line-height: 1.7;
+    max-width: 650px;
+    margin-bottom: 1.5rem;
+}
+
+/* Hero Section Text */
+.hero-title {
+    line-height: 1.3;
+    max-width: 800px;
+}
+
+.hero-subtitle {
+    line-height: 1.7;
+    max-width: 650px;
+}
+
+/* Section Headers */
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.3;
+    margin-bottom: 1rem;
+}
+
+/* Navigation Text */
+.nav-link {
+    line-height: 1.5;
+}
+
+/* Modal Text */
+.modal-body p {
+    line-height: 1.7;
+    max-width: 600px;
+}
+
+.modal-body h3 {
+    line-height: 1.4;
+}
+
+/* Auth Forms */
+.auth-fields input {
+    line-height: 1.5;
+}
+
+/* Preview Cards */
+.preview-card p {
+    line-height: 1.7;
+    max-width: 650px;
+}
+
+/* Footer Text */
+.footer-brand p {
+    line-height: 1.7;
+    max-width: 650px;
+}
+
+/* Link Text */
+a {
+    line-height: 1.5;
+}
+
+/* List Items */
+li {
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+}
+
+/* Blockquotes */
+blockquote {
+    line-height: 1.7;
+    max-width: 650px;
+}
+
+/* Code Blocks */
+code {
+    line-height: 1.6;
+}
+
+pre {
+    line-height: 1.6;
+    max-width: 650px;
+}
+
+/* Form Labels */
+label {
+    line-height: 1.5;
+}
+
+/* Button Text */
+.btn {
+    line-height: 1.5;
+}
+
+/* Card Descriptions */
+.card-description {
+    line-height: 1.7;
+    max-width: 650px;
+}
+
+/* Feature Lists */
+.feature-list li {
+    line-height: 1.7;
+}
+
+/* Testimonials */
+.testimonial-text {
+    line-height: 1.7;
+    max-width: 650px;
+}
+
+/* Blog Posts */
+.blog-excerpt {
+    line-height: 1.7;
+    max-width: 650px;
+}
+
+/* Documentation */
+.doc-content p {
+    line-height: 1.7;
+    max-width: 650px;
+}
+
+/* API Documentation */
+.api-description {
+    line-height: 1.7;
+    max-width: 650px;
+}
+
+/* Error Messages */
+.error-message {
+    line-height: 1.7;
+    max-width: 650px;
+}
+
+/* Success Messages */
+.success-message {
+    line-height: 1.7;
+    max-width: 650px;
+}
+
+/* Alert Messages */
+.alert-message {
+    line-height: 1.7;
+    max-width: 650px;
+}
+
+/* Tooltips */
+.tooltip-text {
+    line-height: 1.5;
+}
+
+/* Dropdown Menus */
+.dropdown-item {
+    line-height: 1.5;
+}
+
+/* Breadcrumbs */
+.breadcrumb-text {
+    line-height: 1.5;
+}
+
+/* Pagination */
+.pagination-text {
+    line-height: 1.5;
+}
+
+/* Search Results */
+.search-result-description {
+    line-height: 1.7;
+    max-width: 650px;
+}
+
+/* Comments */
+.comment-text {
+    line-height: 1.7;
+    max-width: 650px;
+}
+
+/* Chat Messages */
+.chat-message {
+    line-height: 1.7;
+    max-width: 650px;
+}
+
+/* Notifications */
+.notification-text {
+    line-height: 1.7;
+    max-width: 650px;
+}
+
+/* Status Messages */
+.status-text {
+    line-height: 1.7;
+    max-width: 650px;
+}
+
+/* Loading Messages */
+.loading-text {
+    line-height: 1.7;
+    max-width: 650px;
+}
+
+/* Empty States */
+.empty-state-text {
+    line-height: 1.7;
+    max-width: 650px;
+}
+
+/* Help Text */
+.help-text {
+    line-height: 1.7;
+    max-width: 650px;
+}
+
+/* Placeholder Text */
+::placeholder {
+    line-height: 1.5;
+}
+
+/* Focus States */
+:focus {
+    outline-offset: 2px;
+}
+
+/* Contrast Improvements */
+.text-primary {
+    color: #ffffff;
+}
+
+.text-secondary {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.text-muted {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Background Contrast Improvements */
+.bg-dark {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.bg-medium {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.bg-light {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Text Shadow Improvements */
+.text-shadow-light {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.text-shadow-medium {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.text-shadow-heavy {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+    p {
+        font-size: 1rem;
+        max-width: 100%;
+    }
+    
+    h1 {
+        font-size: 2rem;
+        line-height: 1.3;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+        line-height: 1.3;
+    }
+    
+    h3 {
+        font-size: 1.3rem;
+        line-height: 1.3;
+    }
+}
+
+@media (max-width: 480px) {
+    p {
+        font-size: 0.95rem;
+        max-width: 100%;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+        line-height: 1.3;
+    }
+    
+    h2 {
+        font-size: 1.4rem;
+        line-height: 1.3;
+    }
+    
+    h3 {
+        font-size: 1.2rem;
+        line-height: 1.3;
+    }
+}
+
+/* Print Styles */
+@media print {
+    p {
+        line-height: 1.6;
+        max-width: 100%;
+        color: #000;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        color: #000;
+    }
+}
+
+/* Accessibility Improvements */
+@media (prefers-contrast: high) {
+    p {
+        color: #000;
+        background-color: #fff;
+    }
+    
+    .text-primary {
+        color: #000;
+    }
+    
+    .text-secondary {
+        color: #333;
+    }
+    
+    .text-muted {
+        color: #666;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Dark Mode Improvements */
+@media (prefers-color-scheme: dark) {
+    p {
+        color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .text-primary {
+        color: #ffffff;
+    }
+    
+    .text-secondary {
+        color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .text-muted {
+        color: rgba(255, 255, 255, 0.6);
+    }
+}
+
+/* Light Mode Improvements */
+@media (prefers-color-scheme: light) {
+    p {
+        color: rgba(0, 0, 0, 0.9);
+    }
+    
+    .text-primary {
+        color: #000000;
+    }
+    
+    .text-secondary {
+        color: rgba(0, 0, 0, 0.8);
+    }
+    
+    .text-muted {
+        color: rgba(0, 0, 0, 0.6);
+    }
+}
+
+/* Font Weight Improvements */
+.font-light {
+    font-weight: 300;
+}
+
+.font-normal {
+    font-weight: 400;
+}
+
+.font-medium {
+    font-weight: 500;
+}
+
+.font-semibold {
+    font-weight: 600;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+/* Letter Spacing Improvements */
+.letter-spacing-tight {
+    letter-spacing: -0.025em;
+}
+
+.letter-spacing-normal {
+    letter-spacing: 0;
+}
+
+.letter-spacing-wide {
+    letter-spacing: 0.025em;
+}
+
+.letter-spacing-wider {
+    letter-spacing: 0.05em;
+}
+
+.letter-spacing-widest {
+    letter-spacing: 0.1em;
+}
+
+/* Text Alignment */
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+/* Text Transform */
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-lowercase {
+    text-transform: lowercase;
+}
+
+.text-capitalize {
+    text-transform: capitalize;
+}
+
+/* Text Decoration */
+.text-underline {
+    text-decoration: underline;
+}
+
+.text-no-underline {
+    text-decoration: none;
+}
+
+/* Text Overflow */
+.text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.text-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.text-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.text-clamp-4 {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Word Break */
+.word-break-normal {
+    word-break: normal;
+}
+
+.word-break-break {
+    word-break: break-word;
+}
+
+.word-break-all {
+    word-break: break-all;
+}
+
+/* White Space */
+.whitespace-normal {
+    white-space: normal;
+}
+
+.whitespace-nowrap {
+    white-space: nowrap;
+}
+
+.whitespace-pre {
+    white-space: pre;
+}
+
+.whitespace-pre-wrap {
+    white-space: pre-wrap;
+}
+
+/* Text Selection */
+::selection {
+    background-color: rgba(0, 212, 255, 0.3);
+    color: #ffffff;
+}
+
+/* Focus Visible */
+.focus-visible:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Skip Links */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 1000;
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
+/* Screen Reader Only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Not Screen Reader Only */
+.not-sr-only {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}

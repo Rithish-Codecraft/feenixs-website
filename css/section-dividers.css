@@ -1,0 +1,619 @@
+/* Section Dividers for Visual Structure */
+
+/* Base Section Divider Styles */
+.section-divider {
+    position: relative;
+    padding: 60px 0;
+    overflow: hidden;
+}
+
+.section-divider::before,
+.section-divider::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--primary-color) 20%, 
+        var(--secondary-color) 50%, 
+        var(--primary-color) 80%, 
+        transparent 100%);
+    opacity: 0.3;
+}
+
+.section-divider::before {
+    top: 0;
+}
+
+.section-divider::after {
+    bottom: 0;
+}
+
+/* Glowing Horizontal Line Divider */
+.divider-glow-line {
+    position: relative;
+    height: 2px;
+    margin: 80px 0;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--primary-color) 10%, 
+        var(--secondary-color) 50%, 
+        var(--primary-color) 90%, 
+        transparent 100%);
+    box-shadow: 
+        0 0 20px rgba(0, 212, 255, 0.6),
+        0 0 40px rgba(255, 0, 255, 0.4);
+    animation: glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% { 
+        opacity: 0.6;
+        box-shadow: 
+            0 0 20px rgba(0, 212, 255, 0.6),
+            0 0 40px rgba(255, 0, 255, 0.4);
+    }
+    50% { 
+        opacity: 1;
+        box-shadow: 
+            0 0 30px rgba(0, 212, 255, 0.8),
+            0 0 60px rgba(255, 0, 255, 0.6);
+    }
+}
+
+/* Gradient Separator */
+.divider-gradient {
+    position: relative;
+    height: 100px;
+    margin: 80px 0;
+    background: linear-gradient(180deg, 
+        transparent 0%, 
+        rgba(0, 212, 255, 0.1) 20%,
+        rgba(255, 0, 255, 0.15) 50%,
+        rgba(0, 212, 255, 0.1) 80%,
+        transparent 100%);
+    overflow: hidden;
+}
+
+.divider-gradient::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200%;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--primary-color) 25%, 
+        var(--secondary-color) 50%, 
+        var(--primary-color) 75%, 
+        transparent 100%);
+    animation: gradientFlow 8s linear infinite;
+}
+
+@keyframes gradientFlow {
+    0% { transform: translate(-50%, -50%) translateX(-50%); }
+    100% { transform: translate(-50%, -50%) translateX(0%); }
+}
+
+/* Subtle Background Shift */
+.divider-background-shift {
+    position: relative;
+    padding: 80px 0;
+    background: linear-gradient(135deg, 
+        rgba(0, 0, 0, 0.95) 0%, 
+        rgba(31, 38, 135, 0.1) 25%, 
+        rgba(0, 0, 0, 0.95) 50%, 
+        rgba(31, 38, 135, 0.1) 75%, 
+        rgba(0, 0, 0, 0.95) 100%);
+    margin: 60px 0;
+}
+
+.divider-background-shift::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 30%, rgba(0, 212, 255, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 70% 70%, rgba(255, 0, 255, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* Wave Divider */
+.divider-wave {
+    position: relative;
+    height: 80px;
+    margin: 60px 0;
+    overflow: hidden;
+}
+
+.divider-wave::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,56 C150,100 350,0 600,56 C850,112 1050,12 1200,56 L1200,120 L0,120 Z' fill='rgba(0,212,255,0.1)'/%3E%3C/svg%3E");
+    background-size: cover;
+    animation: waveFloat 6s ease-in-out infinite;
+}
+
+.divider-wave::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,56 C150,12 350,112 600,56 C850,0 1050,100 1200,56 L1200,120 L0,120 Z' fill='rgba(255,0,255,0.05)'/%3E%3C/svg%3E");
+    background-size: cover;
+    animation: waveFloat 8s ease-in-out infinite reverse;
+}
+
+@keyframes waveFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Dots Pattern Divider */
+.divider-dots {
+    position: relative;
+    height: 60px;
+    margin: 80px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.divider-dots::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.2) 50%, 
+        transparent 100%);
+}
+
+.divider-dots::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    box-shadow: 
+        0 0 10px rgba(0, 212, 255, 0.8),
+        0 0 20px rgba(0, 212, 255, 0.4);
+    animation: dotPulse 2s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+    0%, 100% { 
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% { 
+        transform: scale(1.5);
+        opacity: 1;
+    }
+}
+
+/* Diamond Divider */
+.divider-diamond {
+    position: relative;
+    height: 60px;
+    margin: 80px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.divider-diamond::before,
+.divider-diamond::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    transform: rotate(45deg);
+    box-shadow: 
+        0 0 20px rgba(0, 212, 255, 0.6),
+        0 0 40px rgba(255, 0, 255, 0.4);
+}
+
+.divider-diamond::before {
+    transform: rotate(45deg) scale(0.5);
+}
+
+.divider-diamond::after {
+    transform: rotate(45deg) scale(1);
+    animation: diamondRotate 4s linear infinite;
+}
+
+@keyframes diamondRotate {
+    0% { transform: rotate(45deg) scale(1); }
+    100% { transform: rotate(405deg) scale(1); }
+}
+
+/* Geometric Pattern Divider */
+.divider-geometric {
+    position: relative;
+    height: 100px;
+    margin: 80px 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.divider-geometric::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 10px,
+        rgba(0, 212, 255, 0.1) 10px,
+        rgba(0, 212, 255, 0.1) 20px
+    );
+    animation: geometricSlide 10s linear infinite;
+}
+
+.divider-geometric::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, 
+        var(--primary-color) 25%, 
+        transparent 25%, 
+        transparent 75%, 
+        var(--primary-color) 75%);
+    background-size: 20px 20px;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
+    animation: geometricRotate 8s linear infinite;
+}
+
+@keyframes geometricSlide {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(20px); }
+}
+
+@keyframes geometricRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Particle Divider */
+.divider-particles {
+    position: relative;
+    height: 120px;
+    margin: 80px 0;
+    overflow: hidden;
+}
+
+.divider-particles::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.3) 50%, 
+        transparent 100%);
+}
+
+.particle-line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 2px;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
+}
+
+.particle:nth-child(1) {
+    left: 10%;
+    animation: particleFloat 3s ease-in-out infinite;
+}
+
+.particle:nth-child(2) {
+    left: 25%;
+    animation: particleFloat 3s ease-in-out infinite 0.5s;
+}
+
+.particle:nth-child(3) {
+    left: 40%;
+    animation: particleFloat 3s ease-in-out infinite 1s;
+}
+
+.particle:nth-child(4) {
+    left: 55%;
+    animation: particleFloat 3s ease-in-out infinite 1.5s;
+}
+
+.particle:nth-child(5) {
+    left: 70%;
+    animation: particleFloat 3s ease-in-out infinite 2s;
+}
+
+.particle:nth-child(6) {
+    left: 85%;
+    animation: particleFloat 3s ease-in-out infinite 2.5s;
+}
+
+@keyframes particleFloat {
+    0%, 100% { 
+        transform: translateY(0);
+        opacity: 0.6;
+    }
+    50% { 
+        transform: translateY(-20px);
+        opacity: 1;
+    }
+}
+
+/* Circuit Divider */
+.divider-circuit {
+    position: relative;
+    height: 80px;
+    margin: 80px 0;
+    overflow: hidden;
+}
+
+.divider-circuit::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--primary-color) 10%, 
+        transparent 20%,
+        var(--secondary-color) 30%,
+        transparent 40%,
+        var(--primary-color) 50%,
+        transparent 60%,
+        var(--secondary-color) 70%,
+        transparent 80%,
+        var(--primary-color) 90%,
+        transparent 100%);
+    animation: circuitFlow 5s linear infinite;
+}
+
+.circuit-node {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: var(--primary-color);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.8);
+}
+
+.circuit-node:nth-child(1) {
+    left: 20%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.circuit-node:nth-child(2) {
+    left: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--secondary-color);
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.8);
+}
+
+.circuit-node:nth-child(3) {
+    left: 80%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@keyframes circuitFlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+/* Minimal Divider */
+.divider-minimal {
+    position: relative;
+    height: 40px;
+    margin: 60px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.divider-minimal::before {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.divider-minimal::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    opacity: 0.6;
+}
+
+/* Section Transition Classes */
+.section-transition {
+    position: relative;
+    padding: 40px 0;
+}
+
+.section-transition::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.1) 50%, 
+        transparent 100%);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .divider-glow-line,
+    .divider-gradient,
+    .divider-background-shift,
+    .divider-wave,
+    .divider-dots,
+    .divider-diamond,
+    .divider-geometric,
+    .divider-particles,
+    .divider-circuit,
+    .divider-minimal {
+        margin: 40px 0;
+        height: auto;
+        min-height: 40px;
+    }
+    
+    .section-divider {
+        padding: 40px 0;
+    }
+    
+    .divider-wave {
+        height: 60px;
+    }
+    
+    .divider-particles {
+        height: 80px;
+    }
+    
+    .divider-geometric {
+        height: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .divider-glow-line,
+    .divider-gradient,
+    .divider-background-shift,
+    .divider-wave,
+    .divider-dots,
+    .divider-diamond,
+    .divider-geometric,
+    .divider-particles,
+    .divider-circuit,
+    .divider-minimal {
+        margin: 30px 0;
+        height: auto;
+        min-height: 30px;
+    }
+    
+    .section-divider {
+        padding: 30px 0;
+    }
+    
+    .divider-wave {
+        height: 40px;
+    }
+    
+    .divider-particles {
+        height: 60px;
+    }
+    
+    .divider-geometric {
+        height: 60px;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .divider-glow-line,
+    .divider-gradient,
+    .divider-wave,
+    .divider-dots,
+    .divider-diamond,
+    .divider-geometric,
+    .divider-particles,
+    .divider-circuit {
+        animation: none;
+    }
+    
+    .particle,
+    .circuit-node {
+        animation: none;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .divider-glow-line,
+    .divider-gradient,
+    .divider-wave,
+    .divider-dots,
+    .divider-diamond,
+    .divider-geometric,
+    .divider-particles,
+    .divider-circuit {
+        background: #000;
+        border-color: #000;
+    }
+    
+    .divider-glow-line::before,
+    .divider-gradient::before,
+    .divider-wave::before,
+    .divider-wave::after {
+        background: #fff;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .divider-glow-line,
+    .divider-gradient,
+    .divider-wave,
+    .divider-dots,
+    .divider-diamond,
+    .divider-geometric,
+    .divider-particles,
+    .divider-circuit,
+    .divider-minimal {
+        display: none;
+    }
+    
+    .section-divider {
+        border-top: 1px solid #000;
+        border-bottom: 1px solid #000;
+        padding: 20px 0;
+    }
+}

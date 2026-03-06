@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Portal - Feenixs</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/shared.css">
+    <link rel="stylesheet" href="../css/developer-portal.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Prism.js for code highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-animation">
+                <div class="code-line"></div>
+                <div class="code-line"></div>
+                <div class="code-line"></div>
+            </div>
+            <div class="loading-text">Initializing Developer Portal...</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>FEENIXS</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="vision.html" class="nav-link">Vision</a></li>
+                <li><a href="technologies.html" class="nav-link">Technologies</a></li>
+                <li><a href="ai-playground.html" class="nav-link">AI Playground</a></li>
+                <li><a href="developer-portal.html" class="nav-link active">Developer Portal</a></li>
+                <li><a href="founder.html" class="nav-link">Founder</a></li>
+                <li><a href="community.html" class="nav-link">Community</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-auth">
+                <button id="login-btn" class="auth-btn">Login</button>
+                <button id="register-btn" class="auth-btn primary">Sign Up</button>
+                <div id="user-menu" style="display: none;"></div>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Developer Portal</h1>
+                    <p>Access powerful APIs, comprehensive documentation, and development tools for Feenixs platform</p>
+                    <div class="hero-actions">
+                        <button class="btn primary" onclick="scrollToSection('api-docs')">
+                            <span>API Documentation</span>
+                            <i class="fas fa-code"></i>
+                        </button>
+                        <button class="btn secondary" onclick="scrollToSection('dev-tools')">
+                            <span>Development Tools</span>
+                            <i class="fas fa-tools"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="code-visualization">
+                        <div class="code-lines">
+                            <div class="line"></div>
+                            <div class="line"></div>
+                            <div class="line"></div>
+                            <div class="line"></div>
+                            <div class="line"></div>
+                            <div class="line"></div>
+                            <div class="line"></div>
+                            <div class="line"></div>
+                        </div>
+                        <div class="floating-code">
+                            <pre><code id="code-display">const feenixs = new DeveloperAPI();</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- API Documentation Section -->
+        <section id="api-docs" class="api-docs">
+            <div class="container">
+                <div class="section-header">
+                    <h2>API Documentation</h2>
+                    <p>Comprehensive API reference and interactive testing tools</p>
+                </div>
+                
+                <div class="api-grid">
+                    <!-- Authentication API -->
+                    <div class="api-card">
+                        <div class="api-header">
+                            <h3><i class="fas fa-key"></i> Authentication API</h3>
+                            <span class="api-status active">Live</span>
+                        </div>
+                        <div class="api-content">
+                            <div class="api-endpoint">
+                                <h4>Endpoints</h4>
+                                <div class="endpoint-list">
+                                    <div class="endpoint">
+                                        <span class="method post">POST</span>
+                                        <span class="url">/api/auth/login</span>
+                                    </div>
+                                    <div class="endpoint">
+                                        <span class="method post">POST</span>
+                                        <span class="url">/api/auth/register</span>
+                                    </div>
+                                    <div class="endpoint">
+                                        <span class="method get">GET</span>
+                                        <span class="url">/api/auth/verify</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="code-example">
+                                <h4>Example Usage</h4>
+                                <pre><code class="language-javascript">// Login User
+const response = await feenixs.auth.login({
+    email: 'user@example.com',
+    password: 'securePassword'
+});
+
+// Register User
+const newUser = await feenixs.auth.register({
+    username: 'developer',
+    email: 'dev@feenixs.com',
+    password: 'devPassword123'
+});
+
+// Verify Token
+const isValid = await feenixs.auth.verify('token_here');</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI API -->
+                    <div class="api-card">
+                        <div class="api-header">
+                            <h3><i class="fas fa-brain"></i> AI Services API</h3>
+                            <span class="api-status active">Live</span>
+                        </div>
+                        <div class="api-content">
+                            <div class="api-endpoint">
+                                <h4>Endpoints</h4>
+                                <div class="endpoint-list">
+                                    <div class="endpoint">
+                                        <span class="method post">POST</span>
+                                        <span class="url">/api/ai/text-generation</span>
+                                    </div>
+                                    <div class="endpoint">
+                                        <span class="method post">POST</span>
+                                        <span class="url">/api/ai/image-analysis</span>
+                                    </div>
+                                    <div class="endpoint">
+                                        <span class="method post">POST</span>
+                                        <span class="url">/api/ai/sentiment-analysis</span>
+                                    </div>
+                                    <div class="endpoint">
+                                        <span class="method post">POST</span>
+                                        <span class="url">/api/ai/language-translation</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="code-example">
+                                <h4>Example Usage</h4>
+                                <pre><code class="language-javascript">// Text Generation
+const text = await feenixs.ai.generateText({
+    prompt: 'Create a futuristic AI assistant',
+    style: 'professional',
+    length: 500
+});
+
+// Image Analysis
+const analysis = await feenixs.ai.analyzeImage({
+    imageUrl: 'https://example.com/image.jpg',
+    features: ['objects', 'faces', 'sentiment']
+});
+
+// Sentiment Analysis
+const sentiment = await feenixs.ai.analyzeSentiment({
+    text: 'This product is amazing!',
+    language: 'en'
+});</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Data API -->
+                    <div class="api-card">
+                        <div class="api-header">
+                            <h3><i class="fas fa-database"></i> Data Management API</h3>
+                            <span class="api-status beta">Beta</span>
+                        </div>
+                        <div class="api-content">
+                            <div class="api-endpoint">
+                                <h4>Endpoints</h4>
+                                <div class="endpoint-list">
+                                    <div class="endpoint">
+                                        <span class="method get">GET</span>
+                                        <span class="url">/api/data/users</span>
+                                    </div>
+                                    <div class="endpoint">
+                                        <span class="method post">POST</span>
+                                        <span class="url">/api/data/store</span>
+                                    </div>
+                                    <div class="endpoint">
+                                        <span class="method put">PUT</span>
+                                        <span class="url">/api/data/update</span>
+                                    </div>
+                                    <div class="endpoint">
+                                        <span class="method delete">DELETE</span>
+                                        <span class="url">/api/data/delete</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="code-example">
+                                <h4>Example Usage</h4>
+                                <pre><code class="language-javascript">// Get Users
+const users = await feenixs.data.getUsers({
+    page: 1,
+    limit: 50,
+    filters: { active: true }
+});
+
+// Store Data
+const result = await feenixs.data.store({
+    type: 'user_preferences',
+    data: { theme: 'dark', notifications: true }
+});
+
+// Update Data
+await feenixs.data.update({
+    id: 'user_123',
+    data: { lastLogin: new Date() }
+});</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Analytics API -->
+                    <div class="api-card">
+                        <div class="api-header">
+                            <h3><i class="fas fa-chart-line"></i> Analytics API</h3>
+                            <span class="api-status experimental">Experimental</span>
+                        </div>
+                        <div class="api-content">
+                            <div class="api-endpoint">
+                                <h4>Endpoints</h4>
+                                <div class="endpoint-list">
+                                    <div class="endpoint">
+                                        <span class="method get">GET</span>
+                                        <span class="url">/api/analytics/usage</span>
+                                    </div>
+                                    <div class="endpoint">
+                                        <span class="method get">GET</span>
+                                        <span class="url">/api/analytics/performance</span>
+                                    </div>
+                                    <div class="endpoint">
+                                        <span class="method get">GET</span>
+                                        <span class="url">/api/analytics/reports</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="code-example">
+                                <h4>Example Usage</h4>
+                                <pre><code class="language-javascript">// Get Usage Stats
+const stats = await feenixs.analytics.getUsage({
+    timeframe: '30d',
+    metrics: ['requests', 'errors', 'response_time']
+});
+
+// Get Performance Data
+const performance = await feenixs.analytics.getPerformance({
+    service: 'ai_services',
+    timeframe: '24h'
+});
+
+// Generate Report
+const report = await feenixs.analytics.generateReport({
+    type: 'monthly',
+    format: 'pdf'
+});</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Development Tools Section -->
+        <section id="dev-tools" class="dev-tools">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Development Tools</h2>
+                    <p>Interactive tools for testing, debugging, and development</p>
+                </div>
+                
+                <div class="tools-grid">
+                    <!-- API Tester -->
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <h3><i class="fas fa-flask"></i> API Tester</h3>
+                        </div>
+                        <div class="tool-content">
+                            <div class="api-tester">
+                                <div class="tester-controls">
+                                    <select id="api-endpoint-select">
+                                        <option value="">Select Endpoint</option>
+                                        <option value="/api/auth/login">Auth Login</option>
+                                        <option value="/api/ai/text-generation">AI Text Generation</option>
+                                        <option value="/api/ai/image-analysis">AI Image Analysis</option>
+                                        <option value="/api/data/users">Data Users</option>
+                                    </select>
+                                    <select id="api-method-select">
+                                        <option value="GET">GET</option>
+                                        <option value="POST">POST</option>
+                                        <option value="PUT">PUT</option>
+                                        <option value="DELETE">DELETE</option>
+                                    </select>
+                                    <input type="text" id="api-token-input" placeholder="Enter API Token">
+                                </div>
+                                <div class="request-body">
+                                    <textarea id="request-body" placeholder="Enter JSON request body"></textarea>
+                                </div>
+                                <div class="tester-actions">
+                                    <button class="btn primary" onclick="testAPI()">Send Request</button>
+                                    <button class="btn secondary" onclick="clearAPI()">Clear</button>
+                                </div>
+                                <div class="response-display">
+                                    <h4>Response</h4>
+                                    <pre id="api-response" class="response-code"></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Code Generator -->
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <h3><i class="fas fa-code"></i> Code Generator</h3>
+                        </div>
+                        <div class="tool-content">
+                            <div class="code-generator">
+                                <div class="generator-controls">
+                                    <select id="code-language-select">
+                                        <option value="javascript">JavaScript</option>
+                                        <option value="python">Python</option>
+                                        <option value="java">Java</option>
+                                        <option value="cpp">C++</option>
+                                        <option value="php">PHP</option>
+                                    </select>
+                                    <select id="code-template-select">
+                                        <option value="api-client">API Client</option>
+                                        <option value="auth-middleware">Auth Middleware</option>
+                                        <option value="data-model">Data Model</option>
+                                        <option value="error-handler">Error Handler</option>
+                                    </select>
+                                    <input type="text" id="code-description" placeholder="Describe functionality">
+                                </div>
+                                <div class="generator-actions">
+                                    <button class="btn primary" onclick="generateCode()">Generate Code</button>
+                                    <button class="btn secondary" onclick="copyCode()">Copy</button>
+                                </div>
+                                <div class="generated-code">
+                                    <pre id="code-output" class="code-display"></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Database Manager -->
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <h3><i class="fas fa-database"></i> Database Manager</h3>
+                        </div>
+                        <div class="tool-content">
+                            <div class="db-manager">
+                                <div class="db-controls">
+                                    <select id="db-table-select">
+                                        <option value="users">Users</option>
+                                        <option value="api_keys">API Keys</option>
+                                        <option value="analytics">Analytics</option>
+                                        <option value="logs">Logs</option>
+                                    </select>
+                                    <div class="db-actions">
+                                        <button class="btn primary" onclick="queryDatabase()">Query</button>
+                                        <button class="btn secondary" onclick="exportData()">Export</button>
+                                    </div>
+                                </div>
+                                <div class="db-results">
+                                    <div class="results-table">
+                                        <table id="db-results-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Data</th>
+                                                    <th>Created</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="db-results-body">
+                                                <!-- Results will be populated here -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Performance Monitor -->
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <h3><i class="fas fa-tachometer-alt"></i> Performance Monitor</h3>
+                        </div>
+                        <div class="tool-content">
+                            <div class="perf-monitor">
+                                <div class="perf-stats">
+                                    <div class="stat-item">
+                                        <span class="stat-label">API Response Time</span>
+                                        <span class="stat-value" id="api-response-time">0ms</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-label">Server Load</span>
+                                        <span class="stat-value" id="server-load">0%</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-label">Memory Usage</span>
+                                        <span class="stat-value" id="memory-usage">0MB</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-label">Active Connections</span>
+                                        <span class="stat-value" id="active-connections">0</span>
+                                    </div>
+                                </div>
+                                <div class="perf-chart">
+                                    <canvas id="performance-chart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SDK & Libraries Section -->
+        <section class="sdk-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>SDK & Libraries</h2>
+                    <p>Official SDKs and libraries for seamless integration</p>
+                </div>
+                
+                <div class="sdk-grid">
+                    <!-- JavaScript SDK -->
+                    <div class="sdk-card">
+                        <div class="sdk-header">
+                            <h3><i class="fab fa-js"></i> JavaScript SDK</h3>
+                            <span class="version">v2.1.0</span>
+                        </div>
+                        <div class="sdk-content">
+                            <div class="install-command">
+                                <h4>Installation</h4>
+                                <pre><code>npm install @feenixs/sdk</code></pre>
+                            </div>
+                            <div class="usage-example">
+                                <h4>Quick Start</h4>
+                                <pre><code class="language-javascript">import { FeenixsSDK } from '@feenixs/sdk';
+
+const client = new FeenixsSDK({
+    apiKey: 'your-api-key',
+    environment: 'production'
+});
+
+// Authentication
+await client.auth.login({
+    email: 'user@example.com',
+    password: 'password'
+});
+
+// AI Services
+const text = await client.ai.generateText({
+    prompt: 'Hello world'
+});
+
+// Data Management
+const users = await client.data.getUsers();</code></pre>
+                            </div>
+                            <div class="sdk-actions">
+                                <button class="btn primary" onclick="downloadSDK('js')">Download</button>
+                                <button class="btn secondary" onclick="viewSDKDocs('js')">Documentation</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Python SDK -->
+                    <div class="sdk-card">
+                        <div class="sdk-header">
+                            <h3><i class="fab fa-python"></i> Python SDK</h3>
+                            <span class="version">v2.1.0</span>
+                        </div>
+                        <div class="sdk-content">
+                            <div class="install-command">
+                                <h4>Installation</h4>
+                                <pre><code>pip install feenixs-sdk</code></pre>
+                            </div>
+                            <div class="usage-example">
+                                <h4>Quick Start</h4>
+                                <pre><code class="language-python">from feenixs_sdk import FeenixsClient
+
+client = FeenixsClient(
+    api_key='your-api-key',
+    environment='production'
+)
+
+# Authentication
+client.auth.login(
+    email='user@example.com',
+    password='password'
+)
+
+# AI Services
+text = client.ai.generate_text(
+    prompt='Hello world'
+)
+
+# Data Management
+users = client.data.get_users()</code></pre>
+                            </div>
+                            <div class="sdk-actions">
+                                <button class="btn primary" onclick="downloadSDK('python')">Download</button>
+                                <button class="btn secondary" onclick="viewSDKDocs('python')">Documentation</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- REST API -->
+                    <div class="sdk-card">
+                        <div class="sdk-header">
+                            <h3><i class="fas fa-plug"></i> REST API</h3>
+                            <span class="version">v2.0</span>
+                        </div>
+                        <div class="sdk-content">
+                            <div class="api-info">
+                                <h4>Base URL</h4>
+                                <pre><code>https://api.feenixs.com/v2</code></pre>
+                            </div>
+                            <div class="api-info">
+                                <h4>Authentication</h4>
+                                <pre><code>Bearer Token Required</code></pre>
+                            </div>
+                            <div class="api-info">
+                                <h4>Rate Limits</h4>
+                                <pre><code>1000 requests/hour</code></pre>
+                            </div>
+                            <div class="sdk-actions">
+                                <button class="btn primary" onclick="downloadSDK('rest')">Postman Collection</button>
+                                <button class="btn secondary" onclick="viewSDKDocs('rest')">API Docs</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Feenixs Developer</h3>
+                    <p>Building the future of AI development</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">API Reference</a></li>
+                        <li><a href="#">SDK Downloads</a></li>
+                        <li><a href="#">Code Examples</a></li>
+                        <li><a href="#">Community Forum</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <p>dev-support@feenixs.com</p>
+                    <p>+1 (555) 123-4567</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">API License</a></li>
+                        <li><a href="#">Developer Agreement</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Feenixs. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../js/shared.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.js"></script>
+    <script src="../js/developer-portal.js"></script>
+</body>
+</html>

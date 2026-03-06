@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Playground - Feenixs</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/shared.css">
+    <link rel="stylesheet" href="../css/ai-playground.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-content">
+            <div class="neural-network">
+                <div class="node"></div>
+                <div class="node"></div>
+                <div class="node"></div>
+                <div class="node"></div>
+            </div>
+            <div class="loading-text">Initializing AI Playground...</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>FEENIXS</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="vision.html" class="nav-link">Vision</a></li>
+                <li><a href="technologies.html" class="nav-link">Technologies</a></li>
+                <li><a href="ai-playground.html" class="nav-link active">AI Playground</a></li>
+                <li><a href="founder.html" class="nav-link">Founder</a></li>
+                <li><a href="community.html" class="nav-link">Community</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-auth">
+                <button id="login-btn" class="auth-btn">Login</button>
+                <button id="register-btn" class="auth-btn primary">Sign Up</button>
+                <div id="user-menu" style="display: none;"></div>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>AI Playground</h1>
+                    <p>Experience the power of artificial intelligence through interactive demos and experiments</p>
+                    <div class="hero-actions">
+                        <button class="btn primary" onclick="scrollToSection('ai-tools')">
+                            <span>Explore AI Tools</span>
+                            <i class="fas fa-rocket"></i>
+                        </button>
+                        <button class="btn secondary" onclick="scrollToSection('experiments')">
+                            <span>Run Experiments</span>
+                            <i class="fas fa-flask"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div id="ai-visualization" class="ai-visualization"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Tools Section -->
+        <section id="ai-tools" class="ai-tools">
+            <div class="container">
+                <div class="section-header">
+                    <h2>AI Tools & Demos</h2>
+                    <p>Interactive AI applications powered by cutting-edge machine learning</p>
+                </div>
+                
+                <div class="tools-grid">
+                    <!-- Text Generator -->
+                    <div class="tool-card" data-tool="text-generator">
+                        <div class="tool-icon">
+                            <i class="fas fa-pen-fancy"></i>
+                        </div>
+                        <h3>AI Text Generator</h3>
+                        <p>Generate creative text, stories, and content using advanced language models</p>
+                        <button class="tool-btn" onclick="openTool('text-generator')">
+                            <span>Launch Tool</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- Image Recognition -->
+                    <div class="tool-card" data-tool="image-recognition">
+                        <div class="tool-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Image Recognition</h3>
+                        <p>Upload images and let AI identify objects, faces, and scenes</p>
+                        <button class="tool-btn" onclick="openTool('image-recognition')">
+                            <span>Launch Tool</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- Voice Assistant -->
+                    <div class="tool-card" data-tool="voice-assistant">
+                        <div class="tool-icon">
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                        <h3>Voice Assistant</h3>
+                        <p>Interact with AI through voice commands and speech recognition</p>
+                        <button class="tool-btn" onclick="openTool('voice-assistant')">
+                            <span>Launch Tool</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- Data Visualizer -->
+                    <div class="tool-card" data-tool="data-visualizer">
+                        <div class="tool-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Data Visualizer</h3>
+                        <p>Transform complex data into beautiful, interactive visualizations</p>
+                        <button class="tool-btn" onclick="openTool('data-visualizer')">
+                            <span>Launch Tool</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- Code Assistant -->
+                    <div class="tool-card" data-tool="code-assistant">
+                        <div class="tool-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>AI Code Assistant</h3>
+                        <p>Get help with coding, debugging, and code optimization</p>
+                        <button class="tool-btn" onclick="openTool('code-assistant')">
+                            <span>Launch Tool</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- Neural Network Builder -->
+                    <div class="tool-card" data-tool="neural-builder">
+                        <div class="tool-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Neural Network Builder</h3>
+                        <p>Design and train your own neural networks visually</p>
+                        <button class="tool-btn" onclick="openTool('neural-builder')">
+                            <span>Launch Tool</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experiments Section -->
+        <section id="experiments" class="experiments">
+            <div class="container">
+                <div class="section-header">
+                    <h2>AI Experiments</h2>
+                    <p>Explore cutting-edge AI research and experimental features</p>
+                </div>
+                
+                <div class="experiments-grid">
+                    <!-- Sentiment Analysis -->
+                    <div class="experiment-card">
+                        <div class="experiment-header">
+                            <h3>Sentiment Analysis</h3>
+                            <span class="experiment-status active">Live</span>
+                        </div>
+                        <div class="experiment-content">
+                            <p>Analyze text sentiment using natural language processing</p>
+                            <div class="experiment-demo">
+                                <textarea id="sentiment-input" placeholder="Type text to analyze sentiment..."></textarea>
+                                <button onclick="analyzeSentiment()">Analyze Sentiment</button>
+                                <div id="sentiment-result" class="result-box"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Object Detection -->
+                    <div class="experiment-card">
+                        <div class="experiment-header">
+                            <h3>Object Detection</h3>
+                            <span class="experiment-status beta">Beta</span>
+                        </div>
+                        <div class="experiment-content">
+                            <p>Detect objects in images using computer vision</p>
+                            <div class="experiment-demo">
+                                <input type="file" id="object-detection-input" accept="image/*" onchange="detectObjects(event)">
+                                <canvas id="object-detection-canvas" style="display:none;"></canvas>
+                                <div id="detection-results" class="result-box"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Style Transfer -->
+                    <div class="experiment-card">
+                        <div class="experiment-header">
+                            <h3>Neural Style Transfer</h3>
+                            <span class="experiment-status experimental">Experimental</span>
+                        </div>
+                        <div class="experiment-content">
+                            <p>Apply artistic styles to your photos using neural networks</p>
+                            <div class="experiment-demo">
+                                <input type="file" id="style-transfer-input" accept="image/*" onchange="transferStyle(event)">
+                                <select id="style-select">
+                                    <option value="vangogh">Van Gogh</option>
+                                    <option value="picasso">Picasso</option>
+                                    <option value="monet">Monet</option>
+                                </select>
+                                <div id="style-result" class="result-box"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Language Translation -->
+                    <div class="experiment-card">
+                        <div class="experiment-header">
+                            <h3>Language Translation</h3>
+                            <span class="experiment-status active">Live</span>
+                        </div>
+                        <div class="experiment-content">
+                            <p>Translate text between multiple languages</p>
+                            <div class="experiment-demo">
+                                <select id="source-language">
+                                    <option value="en">English</option>
+                                    <option value="es">Spanish</option>
+                                    <option value="fr">French</option>
+                                    <option value="de">German</option>
+                                </select>
+                                <textarea id="translation-input" placeholder="Enter text to translate..."></textarea>
+                                <select id="target-language">
+                                    <option value="es">Spanish</option>
+                                    <option value="fr">French</option>
+                                    <option value="de">German</option>
+                                    <option value="en">English</option>
+                                </select>
+                                <button onclick="translateText()">Translate</button>
+                                <div id="translation-result" class="result-box"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Metrics Dashboard -->
+        <section class="metrics-dashboard">
+            <div class="container">
+                <div class="section-header">
+                    <h2>AI Performance Metrics</h2>
+                    <p>Real-time performance and usage statistics</p>
+                </div>
+                
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <h4>Model Accuracy</h4>
+                        <div class="metric-value" id="accuracy-metric">94.2%</div>
+                        <div class="metric-chart">
+                            <canvas id="accuracy-chart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <h4>Processing Speed</h4>
+                        <div class="metric-value" id="speed-metric">1.2ms</div>
+                        <div class="metric-chart">
+                            <canvas id="speed-chart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <h4>Active Models</h4>
+                        <div class="metric-value" id="models-metric">12</div>
+                        <div class="metric-chart">
+                            <canvas id="models-chart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <h4>User Requests</h4>
+                        <div class="metric-value" id="requests-metric">1,247</div>
+                        <div class="metric-chart">
+                            <canvas id="requests-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Tool Modal -->
+    <div id="tool-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="tool-title">AI Tool</h3>
+                <button class="modal-close" onclick="closeToolModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="tool-content">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Feenixs AI</h3>
+                    <p>Engineering the Future of Intelligence</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="vision.html">Vision</a></li>
+                        <li><a href="technologies.html">Technologies</a></li>
+                        <li><a href="ai-playground.html">AI Playground</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">API Reference</a></li>
+                        <li><a href="#">Tutorials</a></li>
+                        <li><a href="#">Community</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>info@feenixs.com</p>
+                    <p>+1 (555) 123-4567</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Feenixs. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../js/shared.js"></script>
+    <script src="../js/ai-playground.js"></script>
+</body>
+</html>

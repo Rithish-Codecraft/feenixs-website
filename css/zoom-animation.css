@@ -1,0 +1,653 @@
+/* Immersive Zoom Animation Styles */
+
+/* Zoom Overlay */
+.zoom-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 99999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    overflow: hidden;
+}
+
+.zoom-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Zoom Content Container */
+.zoom-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-origin: center center;
+    transition: transform 0.1s ease-out;
+}
+
+.zoom-content > * {
+    max-width: none;
+    max-height: none;
+    border-radius: 0;
+    box-shadow: 0 0 100px rgba(0, 212, 255, 0.5);
+}
+
+/* Zoom Lens */
+.zoom-lens {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 3px solid var(--primary-color);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0.8;
+    transition: transform 0.1s ease-out;
+    box-shadow: 
+        0 0 30px rgba(0, 212, 255, 0.6),
+        inset 0 0 30px rgba(0, 212, 255, 0.3);
+    animation: lensPulse 2s ease-in-out infinite;
+}
+
+@keyframes lensPulse {
+    0%, 100% { 
+        transform: scale(1);
+        box-shadow: 
+            0 0 30px rgba(0, 212, 255, 0.6),
+            inset 0 0 30px rgba(0, 212, 255, 0.3);
+    }
+    50% { 
+        transform: scale(1.1);
+        box-shadow: 
+            0 0 50px rgba(0, 212, 255, 0.8),
+            inset 0 0 50px rgba(0, 212, 255, 0.4);
+    }
+}
+
+/* Zoom Particles */
+.zoom-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.zoom-particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: particleFade 1s ease-out forwards;
+}
+
+.zoom-particle.zoom-in {
+    background: var(--primary-color);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+}
+
+.zoom-particle.zoom-out {
+    background: var(--secondary-color);
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.8);
+}
+
+.zoom-particle.zoom-burst {
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    box-shadow: 0 0 30px rgba(0, 212, 255, 1);
+    animation: particleBurst 1.5s ease-out forwards;
+}
+
+@keyframes particleFade {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--tx), var(--ty)) scale(0.2);
+    }
+}
+
+@keyframes particleBurst {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translate(calc(var(--tx) * 0.5), calc(var(--ty) * 0.5)) scale(1.5) rotate(180deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--tx), var(--ty)) scale(0.1) rotate(360deg);
+    }
+}
+
+/* Zoom Glow Effect */
+.zoom-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: radial-gradient(circle, 
+        rgba(0, 212, 255, 0.3) 0%, 
+        rgba(0, 212, 255, 0.1) 30%, 
+        transparent 70%);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+    animation: glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% { 
+        opacity: 0.3;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% { 
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+}
+
+/* Zoom Trail */
+.zoom-trail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Zoom Controls */
+.zoom-controls {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 10;
+}
+
+.zoom-btn {
+    width: 50px;
+    height: 50px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid var(--glass-border);
+    border-radius: 50%;
+    color: var(--glass-text);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.zoom-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.zoom-btn:hover::before {
+    left: 100%;
+}
+
+.zoom-btn:hover {
+    background: var(--glass-highlight);
+    border-color: var(--glass-accent);
+    color: var(--primary-color);
+    transform: scale(1.1);
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+}
+
+.zoom-btn:active {
+    transform: scale(0.95);
+}
+
+.zoom-indicator {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--glass-text);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.zoom-controls:hover .zoom-indicator {
+    opacity: 1;
+}
+
+.zoom-level {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Minimap */
+.zoom-minimap {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 200px;
+    height: 150px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid var(--glass-border);
+    border-radius: 15px;
+    overflow: hidden;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.zoom-minimap:hover {
+    opacity: 1;
+}
+
+.minimap-viewport {
+    position: absolute;
+    background: rgba(0, 212, 255, 0.3);
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    transition: all 0.1s ease-out;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+}
+
+/* Entrance Animation */
+.zoom-entrance {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, 
+        transparent 0%, 
+        rgba(0, 212, 255, 0.3) 30%, 
+        rgba(0, 212, 255, 0.1) 60%, 
+        transparent 100%);
+    animation: entranceExpand 0.6s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes entranceExpand {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+/* Exit Animation */
+.zoom-exit {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, 
+        rgba(0, 212, 255, 0.3) 0%, 
+        rgba(0, 212, 255, 0.1) 40%, 
+        transparent 70%);
+    animation: exitContract 0.6s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes exitContract {
+    0% {
+        transform: scale(3);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+/* Drag Effect */
+.drag-effect {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: dragRipple 0.5s ease-out forwards;
+}
+
+@keyframes dragRipple {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 0;
+    }
+}
+
+/* Zoomable Elements */
+.zoomable {
+    cursor: zoom-in;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.zoomable::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        transparent 0%, 
+        rgba(0, 212, 255, 0.1) 50%, 
+        transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+.zoomable:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+}
+
+.zoomable:hover::before {
+    opacity: 1;
+}
+
+/* Zoom Hint */
+.zoom-hint {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    color: var(--glass-text);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.zoom-hint.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Zoom Loading */
+.zoom-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    border: 3px solid var(--glass-border);
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    animation: zoomSpin 1s linear infinite;
+}
+
+@keyframes zoomSpin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Zoom Error */
+.zoom-error {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid #ff0000;
+    border-radius: 15px;
+    padding: 1rem 2rem;
+    color: #ff0000;
+    font-size: 1rem;
+    text-align: center;
+    animation: errorShake 0.5s ease-in-out;
+}
+
+@keyframes errorShake {
+    0%, 100% { transform: translate(-50%, -50%) translateX(0); }
+    25% { transform: translate(-50%, -50%) translateX(-10px); }
+    75% { transform: translate(-50%, -50%) translateX(10px); }
+}
+
+/* Zoom Success */
+.zoom-success {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid #00ff00;
+    border-radius: 15px;
+    padding: 1rem 2rem;
+    color: #00ff00;
+    font-size: 1rem;
+    text-align: center;
+    animation: successPulse 0.5s ease-in-out;
+}
+
+@keyframes successPulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.1); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .zoom-controls {
+        bottom: 20px;
+        right: 20px;
+        gap: 0.5rem;
+    }
+    
+    .zoom-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .zoom-minimap {
+        width: 150px;
+        height: 100px;
+        top: 20px;
+        right: 20px;
+    }
+    
+    .zoom-lens {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .zoom-controls {
+        bottom: 15px;
+        right: 15px;
+        gap: 0.3rem;
+    }
+    
+    .zoom-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+    
+    .zoom-minimap {
+        width: 120px;
+        height: 80px;
+        top: 15px;
+        right: 15px;
+    }
+    
+    .zoom-lens {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .zoom-hint {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.8rem;
+    }
+}
+
+/* Performance Optimizations */
+.zoom-content {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+.zoom-particle {
+    will-change: transform, opacity;
+}
+
+.zoom-lens {
+    will-change: transform;
+}
+
+.minimap-viewport {
+    will-change: transform;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .zoom-overlay {
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+    }
+    
+    .zoom-particle,
+    .zoom-lens,
+    .zoom-glow {
+        animation: none;
+    }
+    
+    .zoom-entrance,
+    .zoom-exit {
+        animation: none;
+    }
+    
+    .zoomable {
+        transition: none;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .zoom-overlay {
+        background: rgba(0, 0, 0, 1);
+    }
+    
+    .zoom-controls,
+    .zoom-minimap {
+        background: rgba(255, 255, 255, 0.9);
+        border-color: #000;
+    }
+    
+    .zoom-btn {
+        color: #000;
+        border-color: #000;
+    }
+    
+    .zoom-btn:hover {
+        background: rgba(0, 212, 255, 0.5);
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .zoom-overlay {
+        background: rgba(0, 0, 0, 0.98);
+    }
+    
+    .zoom-hint {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+    }
+    
+    .zoom-error {
+        background: rgba(255, 0, 0, 0.1);
+        color: #ff6666;
+    }
+    
+    .zoom-success {
+        background: rgba(0, 255, 0, 0.1);
+        color: #66ff66;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .zoom-overlay {
+        display: none !important;
+    }
+    
+    .zoomable {
+        cursor: default !important;
+    }
+    
+    .zoom-hint {
+        display: none !important;
+    }
+}
