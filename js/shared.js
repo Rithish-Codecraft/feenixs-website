@@ -1645,12 +1645,63 @@ function initFounderImage() {
     const founderImage = document.querySelector('.founder-preview-image');
     const fallbackIcon = document.querySelector('.founder-fallback-icon');
     
-    console.log('=== FOUNDER IMAGE DEBUG ===');
+    console.log('=== FOUNDER IMAGE IMPORT DEBUG ===');
     console.log('Founder image element:', founderImage);
     console.log('Fallback icon element:', fallbackIcon);
     
     if (founderImage) {
-        console.log('Founder image src:', founderImage.src);
+        // Try multiple import methods
+        const imagePaths = [
+            'images/founder.png',
+            './images/founder.png',
+            '/images/founder.png',
+            '../images/founder.png'
+        ];
+        
+        let currentPathIndex = 0;
+        
+        function tryNextPath() {
+            if (currentPathIndex >= imagePaths.length) {
+                console.log('❌ All image paths failed, showing fallback');
+                if (fallbackIcon) {
+                    fallbackIcon.style.display = 'flex';
+                }
+                return;
+            }
+            
+            const currentPath = imagePaths[currentPathIndex];
+            console.log(`Trying path ${currentPathIndex + 1}: ${currentPath}`);
+            
+            // Create test image
+            const testImg = new Image();
+            testImg.onload = function() {
+                console.log(`✅ SUCCESS: Image loaded from ${currentPath}`);
+                founderImage.src = currentPath;
+                founderImage.style.display = 'block';
+                founderImage.style.opacity = '1';
+                founderImage.style.visibility = 'visible';
+                
+                // Add success styling
+                founderImage.style.border = '3px solid green';
+                founderImage.style.background = 'lightgreen';
+            };
+            
+            testImg.onerror = function() {
+                console.log(`❌ FAILED: ${currentPath} did not load`);
+                currentPathIndex++;
+                tryNextPath();
+            };
+            
+            testImg.src = currentPath;
+        }
+        
+        // Start trying paths
+        tryNextPath();
+        
+        // Also set the original path as backup
+        founderImage.src = imagePaths[0];
+        
+        console.log('Founder image src set to:', founderImage.src);
         console.log('Founder image naturalWidth:', founderImage.naturalWidth);
         console.log('Founder image naturalHeight:', founderImage.naturalHeight);
         console.log('Founder image offsetWidth:', founderImage.offsetWidth);
@@ -1659,36 +1710,11 @@ function initFounderImage() {
         console.log('Founder image computed style opacity:', getComputedStyle(founderImage).opacity);
         console.log('Founder image computed style visibility:', getComputedStyle(founderImage).visibility);
         
-        // Check if image loads successfully
-        founderImage.addEventListener('load', function() {
-            console.log('Founder image loaded successfully');
-            founderImage.style.opacity = '1';
-            founderImage.style.visibility = 'visible';
-        });
-        
-        // Handle image loading errors
-        founderImage.addEventListener('error', function() {
-            console.log('Founder image failed to load, showing fallback icon');
-            console.log('Error details:', this.error);
-            founderImage.style.display = 'none';
-            if (fallbackIcon) {
-                fallbackIcon.style.display = 'flex';
-            }
-        });
-        
-        // Force image reload if needed
-        const imgSrc = founderImage.src;
-        console.log('Original src:', imgSrc);
-        founderImage.src = ''; // Clear src
-        setTimeout(() => {
-            founderImage.src = imgSrc; // Reset src to force reload
-            console.log('Reloaded src:', founderImage.src);
-        }, 100);
     } else {
-        console.error('Founder image element not found!');
+        console.error('❌ Founder image element not found!');
     }
     
-    console.log('=== END DEBUG ===');
+    console.log('=== END IMPORT DEBUG ===');
 }
 
 // Initialize all images
@@ -1705,6 +1731,9 @@ function initAllImages() {
     };
     testImg.src = 'images/founder.png';
     
+    // Try to import image as blob (alternative method)
+    tryImportAsBlob();
+    
     // Initialize logo images
     const logoImages = document.querySelectorAll('.logo-image, .nav-logo-image, .footer-logo-image');
     logoImages.forEach(img => {
@@ -1718,6 +1747,32 @@ function initAllImages() {
             img.style.display = 'none';
         });
     });
+}
+
+// Try to import image as blob
+function tryImportAsBlob() {
+    fetch('images/founder.png')
+        .then(response => {
+            if (response.ok) {
+                return response.blob();
+            }
+            throw new Error('Network response was not ok');
+        })
+        .then(blob => {
+            const blobUrl = URL.createObjectURL(blob);
+            console.log('✅ Blob import SUCCESS:', blobUrl);
+            
+            // Apply blob URL to founder image
+            const founderImage = document.querySelector('.founder-preview-image');
+            if (founderImage) {
+                founderImage.src = blobUrl;
+                founderImage.style.border = '3px solid purple';
+                founderImage.style.background = 'plum';
+            }
+        })
+        .catch(error => {
+            console.log('❌ Blob import FAILED:', error.message);
+        });
 }
 
 // Initialize Smooth Scrolling

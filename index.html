@@ -343,7 +343,12 @@
                     </div>
                     <div class="preview-card">
                         <div class="preview-icon">
-                            <img src="images/founder.png" alt="Founder" class="founder-preview-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <img src="images/founder.png" 
+                                 alt="Rithish - Founder of Feenixs" 
+                                 class="founder-preview-image" 
+                                 data-fallback="images/founder.png"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                                 onload="console.log('✅ Founder image loaded successfully via HTML onload');">
                             <div class="founder-fallback-icon" style="display: none;">
                                 <i class="fas fa-user-astronaut elegant-text gradient"></i>
                             </div>
