@@ -43,6 +43,11 @@
     box-shadow: var(--glow-accent);
     animation: none !important;
     overflow: hidden;
+    /* CSS background image fallback */
+    background-image: url('../images/founder.png'), url('images/founder.png'), url('/images/founder.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .founder-profile-image {
@@ -54,6 +59,11 @@
     position: relative;
     z-index: 2;
     transition: none !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    background: transparent !important;
+    border: none !important;
 }
 
 .founder-profile-image:hover {

@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize founder image
     initFounderImage();
     
+    // Test direct image loading
+    testFounderImageDirect();
+    
     // Initialize profile interactions (without animations)
     initProfileInteractions();
     
@@ -23,6 +26,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize social links (without hover effects)
     initSocialLinks();
 });
+
+// Test direct image loading
+function testFounderImageDirect() {
+    const testImg = new Image();
+    testImg.onload = function() {
+        console.log('✅ Direct founder image test SUCCESS');
+    };
+    testImg.onerror = function() {
+        console.log('❌ Direct founder image test FAILED');
+    };
+    testImg.src = '../images/founder.png';
+}
 
 // Disable all animations on founder page
 function disableFounderPageAnimations() {
@@ -48,32 +63,97 @@ function initFounderImage() {
     const founderImage = document.querySelector('.founder-profile-image');
     const fallbackIcon = document.querySelector('.founder-fallback-icon');
     
+    console.log('=== FOUNDER PAGE IMAGE DEBUG ===');
+    console.log('Founder image element:', founderImage);
+    console.log('Fallback icon element:', fallbackIcon);
+    
     if (founderImage) {
-        console.log('Initializing founder image...');
+        console.log('Founder image src:', founderImage.src);
+        console.log('Founder image naturalWidth:', founderImage.naturalWidth);
+        console.log('Founder image naturalHeight:', founderImage.naturalHeight);
+        console.log('Founder image offsetWidth:', founderImage.offsetWidth);
+        console.log('Founder image offsetHeight:', founderImage.offsetHeight);
+        console.log('Founder image computed style display:', getComputedStyle(founderImage).display);
+        console.log('Founder image computed style opacity:', getComputedStyle(founderImage).opacity);
+        console.log('Founder image computed style visibility:', getComputedStyle(founderImage).visibility);
+        
+        // Force image to be visible
+        founderImage.style.display = 'block';
+        founderImage.style.opacity = '1';
+        founderImage.style.visibility = 'visible';
+        founderImage.style.border = '2px solid red';
+        founderImage.style.background = 'lightblue';
         
         // Check if image loads successfully
         founderImage.addEventListener('load', function() {
-            console.log('Founder profile image loaded successfully');
+            console.log('✅ Founder page image loaded successfully');
+            founderImage.style.display = 'block';
             founderImage.style.opacity = '1';
             founderImage.style.visibility = 'visible';
+            founderImage.style.border = '2px solid green';
+            founderImage.style.background = 'lightgreen';
         });
         
         // Handle image loading errors
         founderImage.addEventListener('error', function() {
-            console.log('Founder profile image failed to load, showing fallback icon');
+            console.log('❌ Founder page image failed to load, showing fallback icon');
+            console.log('Error details:', this.error);
             founderImage.style.display = 'none';
             if (fallbackIcon) {
                 fallbackIcon.style.display = 'block';
             }
         });
         
-        // Force image reload if needed
-        const imgSrc = founderImage.src;
-        founderImage.src = ''; // Clear src
-        setTimeout(() => {
-            founderImage.src = imgSrc; // Reset src to force reload
-        }, 100);
+        // Try multiple image paths
+        const imagePaths = [
+            '../images/founder.png',
+            'images/founder.png',
+            '/images/founder.png',
+            './images/founder.png'
+        ];
+        
+        let pathIndex = 0;
+        
+        function tryNextPath() {
+            if (pathIndex >= imagePaths.length) {
+                console.log('❌ All founder page image paths failed');
+                if (fallbackIcon) {
+                    fallbackIcon.style.display = 'block';
+                }
+                return;
+            }
+            
+            const currentPath = imagePaths[pathIndex];
+            console.log(`Trying founder page path ${pathIndex + 1}: ${currentPath}`);
+            
+            const testImg = new Image();
+            testImg.onload = function() {
+                console.log(`✅ Founder page image SUCCESS: ${currentPath}`);
+                founderImage.src = currentPath;
+                founderImage.style.display = 'block';
+                founderImage.style.opacity = '1';
+                founderImage.style.visibility = 'visible';
+                founderImage.style.border = '2px solid green';
+                founderImage.style.background = 'lightgreen';
+            };
+            
+            testImg.onerror = function() {
+                console.log(`❌ Founder page image FAILED: ${currentPath}`);
+                pathIndex++;
+                tryNextPath();
+            };
+            
+            testImg.src = currentPath;
+        }
+        
+        // Start trying paths
+        tryNextPath();
+        
+    } else {
+        console.error('❌ Founder page image element not found!');
     }
+    
+    console.log('=== END FOUNDER PAGE DEBUG ===');
 }
 
 // Scroll Animations with GSAP
