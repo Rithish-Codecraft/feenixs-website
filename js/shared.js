@@ -35,6 +35,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize loading feedback
     initLoadingFeedback();
     
+    // Initialize smooth scrolling
+    initSmoothScrolling();
+    
     // Check authentication status
     checkAuthStatus();
     
@@ -427,11 +430,6 @@ function initAuthSystem() {
                 document.body.style.overflow = '';
                 authForm.reset();
                 updateAuthUI(true);
-                
-                // Redirect to dashboard after successful login
-                setTimeout(() => {
-                    window.location.href = 'pages/user-dashboard.html';
-                }, 500);
             }
         } else {
             const username = document.getElementById('register-username').value;
@@ -455,11 +453,6 @@ function initAuthSystem() {
                 document.body.style.overflow = '';
                 authForm.reset();
                 updateAuthUI(true);
-                
-                // Redirect to dashboard after successful registration
-                setTimeout(() => {
-                    window.location.href = 'pages/user-dashboard.html';
-                }, 500);
             }
         }
     });
@@ -1641,6 +1634,372 @@ window.LoadingFeedback = {
     showLoadingSteps,
     showNotification,
     LoadingManager
+};
+
+// Initialize Smooth Scrolling
+function initSmoothScrolling() {
+    // Create scroll indicator
+    createScrollIndicator();
+    
+    // Create scroll to top button
+    createScrollToTopButton();
+    
+    // Initialize smooth scroll animations
+    initSmoothScrollAnimations();
+    
+    // Initialize parallax effects
+    initSmoothParallax();
+    
+    // Initialize smooth scroll for anchor links
+    initSmoothAnchorLinks();
+    
+    // Initialize scroll performance optimization
+    initScrollPerformance();
+}
+
+// Create Scroll Indicator
+function createScrollIndicator() {
+    const indicator = document.createElement('div');
+    indicator.className = 'scroll-indicator';
+    indicator.id = 'scroll-indicator';
+    document.body.appendChild(indicator);
+    
+    // Update scroll indicator on scroll
+    let ticking = false;
+    
+    function updateScrollIndicator() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrollProgress = (scrollTop / scrollHeight) * 100;
+        
+        indicator.style.transform = `scaleX(${scrollProgress / 100})`;
+        ticking = false;
+    }
+    
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(updateScrollIndicator);
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', requestTick);
+}
+
+// Create Scroll to Top Button
+function createScrollToTopButton() {
+    const button = document.createElement('div');
+    button.className = 'scroll-to-top-smooth';
+    button.id = 'scroll-to-top';
+    button.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    document.body.appendChild(button);
+    
+    // Show/hide button based on scroll position
+    let ticking = false;
+    
+    function updateScrollToTopButton() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > 300) {
+            button.classList.add('visible');
+        } else {
+            button.classList.remove('visible');
+        }
+        
+        ticking = false;
+    }
+    
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(updateScrollToTopButton);
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', requestTick);
+    
+    // Smooth scroll to top when clicked
+    button.addEventListener('click', () => {
+        smoothScrollToTop();
+    });
+}
+
+// Smooth Scroll to Top
+function smoothScrollToTop() {
+    const startPosition = window.pageYOffset;
+    const startTime = performance.now();
+    const duration = 800; // ms
+    
+    function easeInOutCubic(t) {
+        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    }
+    
+    function animateScroll(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = easeInOutCubic(progress);
+        
+        const currentPosition = startPosition * (1 - easedProgress);
+        window.scrollTo(0, currentPosition);
+        
+        if (progress < 1) {
+            requestAnimationFrame(animateScroll);
+        }
+    }
+    
+    requestAnimationFrame(animateScroll);
+}
+
+// Initialize Smooth Scroll Animations
+function initSmoothScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                
+                // Trigger stagger animation
+                if (entry.target.classList.contains('stagger-container-smooth')) {
+                    const items = entry.target.querySelectorAll('.stagger-item-smooth');
+                    items.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.classList.add('visible');
+                        }, index * 150);
+                    });
+                }
+            }
+        });
+    }, observerOptions);
+    
+    // Observe elements with smooth animation classes
+    const animatedElements = document.querySelectorAll('.scroll-fade-in, .scroll-slide-left, .scroll-slide-right, .scroll-scale-in, .scroll-rotate-in, .stagger-item-smooth');
+    animatedElements.forEach(element => {
+        observer.observe(element);
+    });
+    
+    // Observe stagger containers
+    const staggerContainers = document.querySelectorAll('.stagger-container-smooth');
+    staggerContainers.forEach(container => {
+        observer.observe(container);
+    });
+}
+
+// Initialize Smooth Parallax
+function initSmoothParallax() {
+    const parallaxElements = document.querySelectorAll('.parallax-smooth, .parallax-layer-1, .parallax-layer-2, .parallax-layer-3');
+    
+    let ticking = false;
+    
+    function updateParallax() {
+        const scrolled = window.pageYOffset;
+        
+        parallaxElements.forEach(element => {
+            const rect = element.getBoundingClientRect();
+            const speed = element.classList.contains('parallax-layer-1') ? 0.3 :
+                          element.classList.contains('parallax-layer-2') ? 0.5 :
+                          element.classList.contains('parallax-layer-3') ? 0.7 : 0.4;
+            
+            const yPos = -(rect.top * speed);
+            element.style.transform = `translateY(${yPos}px)`;
+        });
+        
+        ticking = false;
+    }
+    
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(updateParallax);
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', requestTick);
+}
+
+// Initialize Smooth Anchor Links
+function initSmoothAnchorLinks() {
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    
+    anchorLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            
+            if (href === '#') return;
+            
+            const target = document.querySelector(href);
+            
+            if (target) {
+                e.preventDefault();
+                
+                const targetPosition = target.offsetTop - 80; // Account for fixed header
+                smoothScrollTo(targetPosition);
+            }
+        });
+    });
+}
+
+// Smooth Scroll to Position
+function smoothScrollTo(targetPosition) {
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    const startTime = performance.now();
+    const duration = 1000; // ms
+    
+    function easeInOutCubic(t) {
+        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    }
+    
+    function animateScroll(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = easeInOutCubic(progress);
+        
+        const currentPosition = startPosition + (distance * easedProgress);
+        window.scrollTo(0, currentPosition);
+        
+        if (progress < 1) {
+            requestAnimationFrame(animateScroll);
+        }
+    }
+    
+    requestAnimationFrame(animateScroll);
+}
+
+// Initialize Scroll Performance
+function initScrollPerformance() {
+    // Add GPU acceleration to scroll elements
+    const scrollElements = document.querySelectorAll('.scroll-fade-in, .scroll-slide-left, .scroll-slide-right, .scroll-scale-in, .scroll-rotate-in, .parallax-smooth');
+    
+    scrollElements.forEach(element => {
+        element.classList.add('gpu-accelerated');
+    });
+    
+    // Optimize scroll performance with passive listeners
+    let supportsPassive = false;
+    
+    try {
+        const opts = Object.defineProperty({}, 'passive', {
+            get: function() {
+                supportsPassive = true;
+                return true;
+            }
+        });
+        
+        window.addEventListener('test', null, opts);
+    } catch (e) {}
+    
+    // Use passive listeners for better performance
+    if (supportsPassive) {
+        window.addEventListener('scroll', () => {}, { passive: true });
+        window.addEventListener('touchstart', () => {}, { passive: true });
+        window.addEventListener('touchmove', () => {}, { passive: true });
+    }
+}
+
+// Enhanced Smooth Scroll for Elements
+function smoothScrollElement(element, targetPosition, duration = 800) {
+    const startPosition = element.scrollTop;
+    const distance = targetPosition - startPosition;
+    const startTime = performance.now();
+    
+    function easeInOutCubic(t) {
+        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    }
+    
+    function animateScroll(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = easeInOutCubic(progress);
+        
+        const currentPosition = startPosition + (distance * easedProgress);
+        element.scrollTop = currentPosition;
+        
+        if (progress < 1) {
+            requestAnimationFrame(animateScroll);
+        }
+    }
+    
+    requestAnimationFrame(animateScroll);
+}
+
+// Smooth Scroll Manager
+const SmoothScrollManager = {
+    // Scroll to element
+    scrollToElement: function(element, offset = 80) {
+        if (typeof element === 'string') {
+            element = document.querySelector(element);
+        }
+        
+        if (element) {
+            const targetPosition = element.offsetTop - offset;
+            smoothScrollTo(targetPosition);
+        }
+    },
+    
+    // Scroll to top
+    scrollToTop: function() {
+        smoothScrollToTop();
+    },
+    
+    // Scroll to bottom
+    scrollToBottom: function() {
+        const targetPosition = document.documentElement.scrollHeight;
+        smoothScrollTo(targetPosition);
+    },
+    
+    // Scroll by amount
+    scrollBy: function(amount, duration = 500) {
+        const startPosition = window.pageYOffset;
+        const targetPosition = startPosition + amount;
+        smoothScrollTo(targetPosition);
+    },
+    
+    // Check if element is in viewport
+    isElementInViewport: function(element, threshold = 0.1) {
+        const rect = element.getBoundingClientRect();
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+        const windowWidth = window.innerWidth || document.documentElement.clientWidth;
+        
+        const vertInView = (rect.top <= windowHeight * (1 - threshold)) && ((rect.top + rect.height) >= windowHeight * threshold);
+        const horInView = (rect.left <= windowWidth * (1 - threshold)) && ((rect.left + rect.width) >= windowWidth * threshold);
+        
+        return (vertInView && horInView);
+    },
+    
+    // Get scroll progress
+    getScrollProgress: function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        return (scrollTop / scrollHeight) * 100;
+    },
+    
+    // Add smooth scroll class to elements
+    addSmoothClass: function(selector, animationType = 'fade-in') {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(element => {
+            element.classList.add(`scroll-${animationType}`);
+        });
+    },
+    
+    // Remove smooth scroll class from elements
+    removeSmoothClass: function(selector, animationType = 'fade-in') {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(element => {
+            element.classList.remove(`scroll-${animationType}`);
+        });
+    }
+};
+
+// Export smooth scroll functions
+window.SmoothScroll = {
+    smoothScrollTo,
+    smoothScrollToTop,
+    smoothScrollElement,
+    SmoothScrollManager
 };
 
 // Create test user for demo purposes
