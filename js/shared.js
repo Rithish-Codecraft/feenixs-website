@@ -1645,7 +1645,20 @@ function initFounderImage() {
     const founderImage = document.querySelector('.founder-preview-image');
     const fallbackIcon = document.querySelector('.founder-fallback-icon');
     
+    console.log('=== FOUNDER IMAGE DEBUG ===');
+    console.log('Founder image element:', founderImage);
+    console.log('Fallback icon element:', fallbackIcon);
+    
     if (founderImage) {
+        console.log('Founder image src:', founderImage.src);
+        console.log('Founder image naturalWidth:', founderImage.naturalWidth);
+        console.log('Founder image naturalHeight:', founderImage.naturalHeight);
+        console.log('Founder image offsetWidth:', founderImage.offsetWidth);
+        console.log('Founder image offsetHeight:', founderImage.offsetHeight);
+        console.log('Founder image computed style display:', getComputedStyle(founderImage).display);
+        console.log('Founder image computed style opacity:', getComputedStyle(founderImage).opacity);
+        console.log('Founder image computed style visibility:', getComputedStyle(founderImage).visibility);
+        
         // Check if image loads successfully
         founderImage.addEventListener('load', function() {
             console.log('Founder image loaded successfully');
@@ -1656,6 +1669,7 @@ function initFounderImage() {
         // Handle image loading errors
         founderImage.addEventListener('error', function() {
             console.log('Founder image failed to load, showing fallback icon');
+            console.log('Error details:', this.error);
             founderImage.style.display = 'none';
             if (fallbackIcon) {
                 fallbackIcon.style.display = 'flex';
@@ -1664,16 +1678,32 @@ function initFounderImage() {
         
         // Force image reload if needed
         const imgSrc = founderImage.src;
+        console.log('Original src:', imgSrc);
         founderImage.src = ''; // Clear src
         setTimeout(() => {
             founderImage.src = imgSrc; // Reset src to force reload
+            console.log('Reloaded src:', founderImage.src);
         }, 100);
+    } else {
+        console.error('Founder image element not found!');
     }
+    
+    console.log('=== END DEBUG ===');
 }
 
 // Initialize all images
 function initAllImages() {
     initFounderImage();
+    
+    // Test direct image loading
+    const testImg = new Image();
+    testImg.onload = function() {
+        console.log('✅ Direct image test SUCCESS - images/founder.png loads correctly');
+    };
+    testImg.onerror = function() {
+        console.log('❌ Direct image test FAILED - images/founder.png failed to load');
+    };
+    testImg.src = 'images/founder.png';
     
     // Initialize logo images
     const logoImages = document.querySelectorAll('.logo-image, .nav-logo-image, .footer-logo-image');

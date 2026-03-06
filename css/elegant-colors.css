@@ -596,12 +596,18 @@
     border: 3px solid var(--glass-border-light);
     box-shadow: var(--shadow-glass-md);
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    display: block;
+    display: block !important;
     background: var(--glass-bg-light);
-    opacity: 1;
-    visibility: visible;
+    opacity: 1 !important;
+    visibility: visible !important;
     position: relative;
-    z-index: 1;
+    z-index: 10;
+    max-width: 100%;
+    height: auto;
+    min-width: 60px;
+    min-height: 60px;
+    border: 3px solid blue !important;
+    background: lightblue !important;
 }
 
 .founder-preview-image:hover {
@@ -619,6 +625,8 @@
     height: 80px;
     margin: 0 auto 16px auto;
     position: relative;
+    border: 2px solid red !important;
+    background: yellow !important;
 }
 
 /* Ensure preview card displays properly */
