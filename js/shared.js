@@ -1863,11 +1863,11 @@ function createScrollToTopButton() {
     });
 }
 
-// Smooth Scroll to Top
+// Fast Scroll to Top
 function smoothScrollToTop() {
     const startPosition = window.pageYOffset;
     const startTime = performance.now();
-    const duration = 800; // ms
+    const duration = 400; // Reduced from 800ms to 400ms
     
     function easeInOutCubic(t) {
         return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
@@ -1901,13 +1901,13 @@ function initSmoothScrollAnimations() {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
                 
-                // Trigger stagger animation
+                // Trigger fast stagger animation
                 if (entry.target.classList.contains('stagger-container-smooth')) {
                     const items = entry.target.querySelectorAll('.stagger-item-smooth');
                     items.forEach((item, index) => {
                         setTimeout(() => {
                             item.classList.add('visible');
-                        }, index * 150);
+                        }, index * 50); // Reduced from 150ms to 50ms
                     });
                 }
             }
@@ -1981,12 +1981,11 @@ function initSmoothAnchorLinks() {
     });
 }
 
-// Smooth Scroll to Position
-function smoothScrollTo(targetPosition) {
+// Fast Smooth Scrolling
+function smoothScrollTo(targetPosition, duration = 300) {
     const startPosition = window.pageYOffset;
     const distance = targetPosition - startPosition;
     const startTime = performance.now();
-    const duration = 1000; // ms
     
     function easeInOutCubic(t) {
         return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
@@ -2039,8 +2038,8 @@ function initScrollPerformance() {
     }
 }
 
-// Enhanced Smooth Scroll for Elements
-function smoothScrollElement(element, targetPosition, duration = 800) {
+// Fast Smooth Scroll for Elements
+function smoothScrollElement(element, targetPosition, duration = 400) { // Reduced from 800ms to 400ms
     const startPosition = element.scrollTop;
     const distance = targetPosition - startPosition;
     const startTime = performance.now();
@@ -2091,7 +2090,7 @@ const SmoothScrollManager = {
     },
     
     // Scroll by amount
-    scrollBy: function(amount, duration = 500) {
+    scrollBy: function(amount, duration = 300) { // Reduced from 500ms to 300ms
         const startPosition = window.pageYOffset;
         const targetPosition = startPosition + amount;
         smoothScrollTo(targetPosition);
