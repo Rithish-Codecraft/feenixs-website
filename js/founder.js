@@ -2,6 +2,9 @@
 
 // Initialize founder page when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize founder image loading
+    initFounderImage();
+    
     // Initialize scroll animations
     initScrollAnimations();
     
@@ -20,6 +23,37 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize social links
     initSocialLinks();
 });
+
+// Initialize Founder Image Loading
+function initFounderImage() {
+    const founderImage = document.querySelector('.founder-avatar-image');
+    const fallbackIcon = document.querySelector('.founder-avatar-fallback');
+    
+    if (founderImage) {
+        // Check if image loads successfully
+        founderImage.addEventListener('load', function() {
+            console.log('Founder avatar image loaded successfully');
+            founderImage.style.opacity = '1';
+            founderImage.style.visibility = 'visible';
+        });
+        
+        // Handle image loading errors
+        founderImage.addEventListener('error', function() {
+            console.log('Founder avatar image failed to load, showing fallback icon');
+            founderImage.style.display = 'none';
+            if (fallbackIcon) {
+                fallbackIcon.style.display = 'flex';
+            }
+        });
+        
+        // Force image reload if needed
+        const imgSrc = founderImage.src;
+        founderImage.src = ''; // Clear src
+        setTimeout(() => {
+            founderImage.src = imgSrc; // Reset src to force reload
+        }, 100);
+    }
+}
 
 // Scroll Animations with GSAP
 function initScrollAnimations() {
