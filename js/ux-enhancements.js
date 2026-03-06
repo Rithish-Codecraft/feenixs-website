@@ -12,17 +12,46 @@ document.addEventListener('DOMContentLoaded', function() {
     initFormValidation();
 });
 
-// Scroll Progress Indicator
+// Ultra-Smooth Scroll Progress Indicator
 function initScrollProgress() {
     const scrollProgress = document.getElementById('scrollProgress');
     
     if (!scrollProgress) return;
     
+    let lastScrollY = 0;
+    let animationFrame;
+    
     window.addEventListener('scroll', function() {
         const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
         const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
-        scrollProgress.style.width = scrolled + '%';
+        const scrolled = Math.min((winScroll / height) * 100, 100);
+        
+        // Cancel previous animation frame
+        if (animationFrame) {
+            cancelAnimationFrame(animationFrame);
+        }
+        
+        // Animate the width change
+        animationFrame = requestAnimationFrame(() => {
+            scrollProgress.style.width = scrolled + '%';
+        });
+        
+        lastScrollY = winScroll;
+    });
+    
+    // Add glow effect on scroll
+    window.addEventListener('scroll', function() {
+        const scrollY = window.pageYOffset;
+        const scrollProgress = Math.min((scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100, 100);
+        
+        // Enhanced glow effect
+        if (scrollProgress > 10) {
+            scrollProgress.style.boxShadow = '0 0 25px rgba(46, 125, 175, 0.8)';
+        } else if (scrollProgress > 50) {
+            scrollProgress.style.boxShadow = '0 0 20px rgba(46, 125, 175, 0.6)';
+        } else {
+            scrollProgress.style.boxShadow = '0 0 15px var(--primary-color)';
+        }
     });
 }
 
@@ -192,7 +221,7 @@ function downloadCSV(content, filename) {
     document.body.removeChild(a);
 }
 
-// Smooth Scrolling
+// Enhanced Smooth Scrolling
 function initSmoothScrolling() {
     const links = document.querySelectorAll('a[href^="#"]');
     
@@ -204,13 +233,43 @@ function initSmoothScrolling() {
             const target = document.querySelector(targetId);
             
             if (target) {
+                // Enhanced smooth scrolling with easing
                 target.scrollIntoView({
                     behavior: 'smooth',
-                    block: 'start'
+                    block: 'start',
+                    inline: 'nearest'
                 });
             }
         });
     });
+    
+    // Add parallax effect to scrolling
+    let ticking = false;
+    let lastScrollY = 0;
+    
+    function updateParallax() {
+        const scrollY = window.pageYOffset;
+        const delta = scrollY - lastScrollY;
+        lastScrollY = scrollY;
+        
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                // Parallax effect for background elements
+                const parallaxElements = document.querySelectorAll('.parallax-element');
+                parallaxElements.forEach(element => {
+                    const speed = element.dataset.speed || 0.5;
+                    const yPos = -(scrollY * speed);
+                    element.style.transform = `translateY(${yPos}px)`;
+                });
+                
+                ticking = false;
+            });
+            
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', updateParallax);
 }
 
 // Reveal Animations

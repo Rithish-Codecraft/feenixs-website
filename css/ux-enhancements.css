@@ -1,4 +1,4 @@
-/* UX Enhancements for Feenixs Website */
+/* UX Enhancements for Feenixs Website - Light Theme */
 
 /* Scroll Progress Indicator */
 .scroll-progress {
@@ -9,18 +9,21 @@
     height: 4px;
     background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
     z-index: 10000;
-    transition: width 0.1s ease;
-    box-shadow: 0 0 10px var(--primary-color);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 15px var(--primary-color);
 }
 
-/* Onboarding Section */
-.onboarding-section {
-    padding: 100px 20px;
+/* Section Backgrounds - Light Theme */
+.onboarding-section,
+.technology-section,
+.founder-section,
+.community-section,
+.developer-section,
+.contact-section {
     background: linear-gradient(135deg, 
-        rgba(0, 0, 0, 0.95) 0%, 
-        rgba(31, 38, 135, 0.2) 50%, 
-        rgba(0, 0, 0, 0.95) 100%);
-    text-align: center;
+        rgba(255, 255, 255, 0.95) 0%, 
+        rgba(248, 249, 250, 0.5) 50%, 
+        rgba(255, 255, 255, 0.95) 100%);
 }
 
 .section-title {
@@ -744,11 +747,11 @@
     box-shadow: 0 10px 25px rgba(172, 139, 83, 0.4);
 }
 
-/* Footer */
+/* Footer - Light Theme */
 .footer {
     background: var(--dark-bg);
     padding: 60px 20px 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid var(--glass-border);
 }
 
 .footer-content {
