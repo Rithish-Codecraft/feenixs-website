@@ -1,20 +1,20 @@
 /* Futuristic Glassmorphism UI System */
 
-/* CSS Variables for Glassmorphism - Light Theme */
+/* CSS Variables for Glassmorphism */
 :root {
-    --glass-bg: rgba(255, 255, 255, 0.7);
-    --glass-border: rgba(255, 255, 255, 0.9);
-    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    --glass-highlight: rgba(46, 125, 175, 0.1);
-    --glass-active: rgba(46, 125, 175, 0.2);
-    --glass-text: rgba(26, 32, 44, 0.9);
-    --glass-text-secondary: rgba(108, 117, 125, 0.7);
-    --glass-accent: rgba(46, 125, 175, 0.2);
-    --glass-glow: 0 0 20px rgba(46, 125, 175, 0.3);
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    --glass-highlight: rgba(255, 255, 255, 0.15);
+    --glass-active: rgba(0, 212, 255, 0.1);
+    --glass-text: rgba(255, 255, 255, 0.9);
+    --glass-text-secondary: rgba(255, 255, 255, 0.7);
+    --glass-accent: rgba(0, 212, 255, 0.2);
+    --glass-glow: 0 0 20px rgba(0, 212, 255, 0.3);
     --glass-reflection: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.2) 0%, 
+        rgba(255, 255, 255, 0.1) 0%, 
         rgba(255, 255, 255, 0.05) 50%, 
-        rgba(255, 255, 255, 0.2) 100%);
+        rgba(255, 255, 255, 0.1) 100%);
 }
 
 /* Base Glassmorphism Styles */
@@ -45,7 +45,7 @@
 .glass:hover {
     background: var(--glass-highlight);
     border-color: var(--glass-accent);
-    box-shadow: 0 12px 40px rgba(46, 125, 175, 0.4);
+    box-shadow: 0 12px 40px rgba(0, 212, 255, 0.4);
     transform: translateY(-2px);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -53,7 +53,7 @@
 .glass:active {
     background: var(--glass-active);
     transform: translateY(0);
-    box-shadow: 0 8px 24px rgba(46, 125, 175, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
 }
 
 /* Navigation Glassmorphism */
@@ -62,7 +62,7 @@
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border-bottom: 1px solid var(--glass-border);
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 24px rgba(31, 38, 135, 0.37);
 }
 
 .nav-container {

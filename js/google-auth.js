@@ -302,13 +302,13 @@ class GoogleAuth {
         
         switch (type) {
             case 'success':
-                notification.style.background = 'linear-gradient(135deg, #AC8B53, #5374AC)';
+                notification.style.background = 'linear-gradient(135deg, #00ff88, #00d4ff)';
                 break;
             case 'error':
                 notification.style.background = 'linear-gradient(135deg, #ff00ff, #ff4444)';
                 break;
             default:
-                notification.style.background = 'linear-gradient(135deg, #AC8B53, #5374AC)';
+                notification.style.background = 'linear-gradient(135deg, #00d4ff, #ff00ff)';
         }
         
         document.body.appendChild(notification);

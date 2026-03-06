@@ -71,7 +71,6 @@ temp/
 .env.production.local
 
 # Local data storage (these contain user data)
-!data/feedback.csv
 data/*.csv
 !data/.gitkeep
 

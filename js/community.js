@@ -656,7 +656,7 @@ function initScrollProgress() {
         left: 0;
         width: 0%;
         height: 3px;
-        background: linear-gradient(90deg, #AC8B53, #5374AC);
+        background: linear-gradient(90deg, #00d4ff, #00ff88);
         z-index: 9999;
         transition: width 0.2s ease;
     `;
