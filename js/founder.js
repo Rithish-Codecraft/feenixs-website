@@ -2,7 +2,7 @@
 
 // Initialize founder page when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize founder image loading
+    // Initialize founder image
     initFounderImage();
     
     // Initialize scroll animations
@@ -24,25 +24,27 @@ document.addEventListener('DOMContentLoaded', function() {
     initSocialLinks();
 });
 
-// Initialize Founder Image Loading
+// Initialize Founder Image
 function initFounderImage() {
-    const founderImage = document.querySelector('.founder-avatar-image');
-    const fallbackIcon = document.querySelector('.founder-avatar-fallback');
+    const founderImage = document.querySelector('.founder-profile-image');
+    const fallbackIcon = document.querySelector('.founder-fallback-icon');
     
     if (founderImage) {
+        console.log('Initializing founder image...');
+        
         // Check if image loads successfully
         founderImage.addEventListener('load', function() {
-            console.log('Founder avatar image loaded successfully');
+            console.log('Founder profile image loaded successfully');
             founderImage.style.opacity = '1';
             founderImage.style.visibility = 'visible';
         });
         
         // Handle image loading errors
         founderImage.addEventListener('error', function() {
-            console.log('Founder avatar image failed to load, showing fallback icon');
+            console.log('Founder profile image failed to load, showing fallback icon');
             founderImage.style.display = 'none';
             if (fallbackIcon) {
-                fallbackIcon.style.display = 'flex';
+                fallbackIcon.style.display = 'block';
             }
         });
         
